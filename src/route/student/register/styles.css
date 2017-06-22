@@ -1,12 +1,22 @@
-.student-register-box{
+.student-register-box {
     width: 50%;
     margin-left: 2%;
     margin-top: 1%;
 }
+
 .ui.compact.segment.upload-image-section {
     margin-top: 0;
     left: 25%;
 }
+
 .required-star {
     color: indianred;
+}
+
+img.ui.small.rounded.bordered.image.image-styles {
+    height: 150px
+}
+
+img.ui.small.rounded.bordered.image.image-styles:hover {
+    cursor: pointer
 }

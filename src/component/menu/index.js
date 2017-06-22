@@ -18,7 +18,7 @@ class Student extends Component {
                             return <Menu.Item key={item.name} name={item.name} color='teal'
                                               active={this.props.active === item.name}
                                               onClick={this.props.onSelect}>
-                                <Icon name={item.icon} color={this.props.active === item.name ? "teal" :'white'}/>
+                                <Icon name={item.icon} color={this.props.active === item.name ? "teal" :'black'}/>
                                 {item.name}
                             </Menu.Item>
                         })

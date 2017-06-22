@@ -18,7 +18,7 @@ import { Button, Segment, Icon } from 'semantic-ui-react'
 class RegisterStudent extends Component {
     @observable
         steps = [
-            {index: 0, completed: false, active: false, title: 'Basic', description: 'Fill the basic details'},
+            {key:0,index: 0, completed: false, active: false, title: 'Basic', description: 'Fill the basic details'},
             {
                 index: 1,
                 completed: false,
