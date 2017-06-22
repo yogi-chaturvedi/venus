@@ -11,7 +11,7 @@ class Student extends Component {
     render() {
         return (
             <div>
-                <Menu icon="labeled" vertical pointing size="small"
+                <Menu stackable icon="labeled" vertical pointing size="small"
                       icon='labeled'>
                     {
                         this.props.menuItems.map((item)=> {
