@@ -1,0 +1,10 @@
+/**
+ * Created by Yogesh Chaturvedi on 15-06-2017.
+ */
+
+.message-bottom-right {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 999999999999;
+}

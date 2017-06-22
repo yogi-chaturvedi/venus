@@ -1,0 +1,41 @@
+.login-form-container .ui.segment.login-box, .signup-form-container .ui.segment.login-box, .verify-user-form-container .ui.segment.login-box {
+    width: 30%;
+    left: 35%;
+    margin-top: 4%;
+    padding: 40px;
+    -webkit-box-shadow: 4px 3px 17px -1px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 2px 17px 3px rgba(0, 0, 0, 0.5);
+    position: absolute;
+}
+
+.signup-form-container .ui.segment.login-box {
+    width: 40%;
+    left: 30%;
+}
+
+.login-form-container .login-button-group a {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.login-logo {
+    margin-top: -21%;
+    margin-left: 35%;
+    width: 115px;
+}
+
+.signup-logo {
+    margin-top: -21%;
+    margin-left: 35%;
+    width: 115px;
+}
+
+.verify-user-logo {
+    margin-top: -21%;
+    margin-left: 35%;
+    width: 115px;
+}
+
+i.blue.calendar.large.bordered.icon.calender-icon {
+    height: 38px;
+}
