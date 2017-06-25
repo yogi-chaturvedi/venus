@@ -13,9 +13,10 @@ class Steps extends Component {
             <div>
                 <Step.Group ordered>
                     {
-                        steps.map((step)=> {
+                        steps.map((step,index)=> {
                             return <Step active={step.active}
                                          icon={step.icon}
+										 key={index}
                                          title={step.title}
                                          description={step.description}
                                          completed={step.completed}
