@@ -134,40 +134,40 @@ class Basic extends Component {
                                     </Grid>
                                 </Segment>
                                 <Segment basic>
-                                <Form.Input size="mini" label='Email' placeholder='someone@example.com' required
-                                            icon='mail'
-                                            iconPosition='left'/>
+                                    <Form.Input size="mini" label='Email' placeholder='someone@example.com' required
+                                                icon='mail'
+                                                iconPosition='left'/>
                                 </Segment>
                                 <Segment basic>
-                                <Grid columns="equal">
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Form.Group inline>
-                                                <label>Contact <span className="required-star">*</span></label>
-                                                <Form.Input size="mini"
-                                                            placeholder='Do not include country code like : +91-'
-                                                            required
-                                                            icon='tablet'
-                                                            iconPosition='left'/>
-                                            </Form.Group>
-                                        </Grid.Column>
-                                        <Grid.Column>
-                                            <Form.Group size="mini" inline>
-                                                <label>DOB <span className="required-star">*</span></label>
-                                                <DatePicker size="mini" required
-                                                            selected={this.selectedDate}
-                                                            onChange={this.handleDOBChange}
-                                                            isClearable={true}
-                                                            dateFormat="DD/MM/YY"
-                                                            maxDate={Moment()}
-                                                            customInput={<Input size="mini"/>}
-                                                            isClearable={true}
-                                                            placeholderText="DD/MM/YY"
-                                                    />
-                                            </Form.Group>
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                </Grid>
+                                    <Grid columns="equal">
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Group inline>
+                                                    <label>Contact <span className="required-star">*</span></label>
+                                                    <Form.Input size="mini"
+                                                                placeholder='Do not include country code like : +91-'
+                                                                required
+                                                                icon='tablet'
+                                                                iconPosition='left'/>
+                                                </Form.Group>
+                                            </Grid.Column>
+                                            <Grid.Column>
+                                                <Form.Group size="mini" inline>
+                                                    <label>DOB <span className="required-star">*</span></label>
+                                                    <DatePicker size="mini" required
+                                                                selected={this.selectedDate}
+                                                                onChange={this.handleDOBChange}
+                                                                isClearable={true}
+                                                                dateFormat="DD/MM/YY"
+                                                                maxDate={Moment()}
+                                                                customInput={<Input size="mini"/>}
+                                                                isClearable={true}
+                                                                placeholderText="DD/MM/YY"
+                                                        />
+                                                </Form.Group>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
                                 </Segment>
                             </Segment>
 
@@ -188,134 +188,137 @@ class Basic extends Component {
                             <Segment color='teal' raised>
                                 <Label as="a" color="teal" ribbon>Father's Detail</Label>
                                 <Segment basic>
-                                <Grid columns="equal">
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Form.Field>
-                                                <Input size="mini" placeholder='First name' labelPosition='left'
-                                                       required
-                                                       label='Mr.   '/>
-                                            </Form.Field>
-                                        </Grid.Column>
-                                        <Grid.Column>
-                                            <Form.Input size="mini" placeholder='Last name' required/>
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Form.Input size="mini" label='Occupation'
-                                                        placeholder='Like:- Buisnessman, Govt. Employee, etc.'
-                                                        icon='doctor'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                        <Grid.Column>
-                                            <Form.Input size="mini" label='Designation'
-                                                        placeholder='First Grade, Owner, etc.'
-                                                        icon='black tie'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                        <Grid.Column >
-                                            <Form.Input size="mini" label='Qualification'
-                                                        placeholder='BA, BCom, M.Tech, etc.'
-                                                        icon='student'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Form.Input size="mini" label='Contact'
-                                                        placeholder='Do not include the country code'
-                                                        icon='mobile'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                        <Grid.Column >
-                                            <Form.Input size="mini" label='Email'
-                                                        placeholder='someone@example.com'
-                                                        icon='mail'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                </Grid>
-                                    </Segment>
+                                    <Grid columns="equal">
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Field>
+                                                    <Input size="mini" placeholder='First name' labelPosition='left'
+                                                           required
+                                                           label='Mr.   '/>
+                                                </Form.Field>
+                                            </Grid.Column>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" placeholder='Last name' required/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" label='Occupation'
+                                                            placeholder='Like:- Buisnessman, Govt. Employee, etc.'
+                                                            icon='doctor'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" label='Designation'
+                                                            placeholder='First Grade, Owner, etc.'
+                                                            icon='black tie'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                            <Grid.Column >
+                                                <Form.Input size="mini" label='Qualification'
+                                                            placeholder='BA, BCom, M.Tech, etc.'
+                                                            icon='student'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" label='Contact'
+                                                            placeholder='Do not include the country code'
+                                                            icon='mobile'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                            <Grid.Column >
+                                                <Form.Input size="mini" label='Email'
+                                                            placeholder='someone@example.com'
+                                                            icon='mail'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
+                                </Segment>
                             </Segment>
                             <Segment color="teal">
                                 <Label as="a" color="teal" ribbon>Mother's Detail</Label>
                                 <Segment basic>
-                                <Grid columns='equal'>
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Form.Field>
-                                                <Input size="mini" placeholder='First name' labelPosition='left'
-                                                       required
-                                                       label='Mrs.'/>
-                                            </Form.Field>
-                                        </Grid.Column>
-                                        <Grid.Column>
-                                            <Form.Input size="mini" placeholder='Last name' required/>
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Form.Input size="mini" label='Occupation'
-                                                        placeholder='Like:- Buisnessman, Govt. Employee, etc.'
-                                                        icon='doctor'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                        <Grid.Column >
-                                            <Form.Input size="mini" label='Designation'
-                                                        placeholder='First Grade, Owner, etc.'
-                                                        icon='black tie'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                        <Grid.Column >
-                                            <Form.Input size="mini" label='Qualification'
-                                                        placeholder='BA, BCom, M.Tech, etc.'
-                                                        icon='student'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                    <Grid.Row>
-                                        <Grid.Column>
-                                            <Form.Input size="mini" label='Contact'
-                                                        placeholder='Do not include the country code'
-                                                        icon='mobile'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                        <Grid.Column >
-                                            <Form.Input size="mini" label='Email'
-                                                        placeholder='someone@example.com'
-                                                        icon='mail'
-                                                        iconPosition='left'/>
-                                        </Grid.Column>
-                                    </Grid.Row>
-                                </Grid>
+                                    <Grid columns='equal'>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Field>
+                                                    <Input size="mini" placeholder='First name' labelPosition='left'
+                                                           required
+                                                           label='Mrs.'/>
+                                                </Form.Field>
+                                            </Grid.Column>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" placeholder='Last name' required/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" label='Occupation'
+                                                            placeholder='Like:- Buisnessman, Govt. Employee, etc.'
+                                                            icon='doctor'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                            <Grid.Column >
+                                                <Form.Input size="mini" label='Designation'
+                                                            placeholder='First Grade, Owner, etc.'
+                                                            icon='black tie'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                            <Grid.Column >
+                                                <Form.Input size="mini" label='Qualification'
+                                                            placeholder='BA, BCom, M.Tech, etc.'
+                                                            icon='student'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" label='Contact'
+                                                            placeholder='Do not include the country code'
+                                                            icon='mobile'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                            <Grid.Column >
+                                                <Form.Input size="mini" label='Email'
+                                                            placeholder='someone@example.com'
+                                                            icon='mail'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
                                 </Segment>
                             </Segment>
                             <Segment color="teal">
                                 <Label as="a" color="teal" ribbon>Address</Label>
                                 <Segment basic>
-                                <Form.Input size="mini" label='Line 1'
-                                            placeholder='Enter...'
-                                            icon='home'
-                                            required
-                                            iconPosition='left'/>
-                                <Form.Input size="mini" label='Line 2'
-                                            placeholder='Enter...'
-                                            icon='home'
-                                            iconPosition='left'/>
-                                <Form.Group>
-                                    <Form.Dropdown onChange={(e,value)=>{this.stateChange(value)}}
-                                                   text='Select State'
-                                                   search
-                                                   minCharacters={0}
-                                                   width={5}
-                                                   options={this.stateOptions}/>
-                                    <Form.Dropdown options={this.cityOptions}
-                                                   text='Select City'
-                                                   search
-                                                   width={5}/>
-                                </Form.Group>
-                                    </Segment>
+                                    <Form.Input size="mini" label='Line 1'
+                                                placeholder='Enter...'
+                                                icon='home'
+                                                required
+                                                iconPosition='left'/>
+                                    <Form.Input size="mini" label='Line 2'
+                                                placeholder='Enter...'
+                                                icon='home'
+                                                iconPosition='left'/>
+                                    <Form.Group>
+                                        <Label color="teal" basic>State</Label>
+                                        <Form.Dropdown onChange={(e,value)=>{this.stateChange(value)}}
+                                                       text='Select State'
+                                                       search
+                                                       minCharacters={0}
+                                                       width={5}
+                                                       options={this.stateOptions}/>
+                                        <Label color="teal" basic>City</Label>
+                                        <Form.Dropdown options={this.cityOptions}
+                                                       text='Select City'
+                                                       search
+                                                       width={5}/>
+
+                                    </Form.Group>
+                                </Segment>
                             </Segment>
                             <Form.Field>
                                 <Divider hidden vertical/>

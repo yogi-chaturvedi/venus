@@ -20,3 +20,35 @@ img.ui.small.rounded.bordered.image.image-styles {
 img.ui.small.rounded.bordered.image.image-styles:hover {
     cursor: pointer
 }
+
+button.ui.red.mini.basic.circular.icon.button {
+    margin-top: 60%;
+}
+
+@media print {
+    div#myDivToPrint {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    a.ui.red.large.right.corner.label{
+        display: none;
+    }
+    .ui.ordered.steps{
+        display: none;
+    }
+    button.ui.positive.animated.right.floated.button {
+        display: none;
+    }
+
+    button.ui.secondary.animated.left.floated.button {
+        display: none;
+    }
+}
