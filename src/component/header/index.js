@@ -56,36 +56,37 @@ class Header extends Component {
     }
 
     render() {
+        const childrenWithProps = React.Children.map(this.props.children,
+            (child) => React.cloneElement(child, {showToastr: this.props.showToastr})
+        );
         return (
             <div>
                 <Segment>
-                <Menu secondary stackable color={"teal"}>
-                    <Menu.Item name="home" onClick={this.menuClicked}>
-                        <img src={LogoImage}/></Menu.Item>
-                    <Menu.Item name="student" onClick={this.menuClicked} active={this.active === "student"}>
-                    </Menu.Item>
-                    <Menu.Item name="employee" onClick={this.menuClicked} active={this.active === "employee"}>
-                    </Menu.Item>
-                    <Menu.Item name="assets" onClick={this.menuClicked} active={this.active === "assets"}>
-                    </Menu.Item>
-                    <Menu.Menu position='right'>
-                        <Menu.Item>
-                            <Input icon='search' placeholder='Search...'/>
+                    <Menu secondary stackable color={"teal"}>
+                        <Menu.Item name="home" onClick={this.menuClicked}>
+                            <img src={LogoImage}/></Menu.Item>
+                        <Menu.Item name="student" onClick={this.menuClicked} active={this.active === "student"}>
                         </Menu.Item>
-                        <Menu.Item name='logout'>
+                        <Menu.Item name="employee" onClick={this.menuClicked} active={this.active === "employee"}>
+                        </Menu.Item>
+                        <Menu.Item name="assets" onClick={this.menuClicked} active={this.active === "assets"}>
+                        </Menu.Item>
+                        <Menu.Menu position='right'>
+                            <Menu.Item>
+                                <Input icon='search' placeholder='Search...'/>
+                            </Menu.Item>
+                            <Menu.Item name='logout'>
                                 <span>
                                 <img src={UserImage} height="35px" width="35px"/></span>
-                            <Dropdown item text='user1'
-                                      onChange={this.dropdownMenuChanged}
-                                      options={options}>
-                            </Dropdown>
-                        </Menu.Item>
-                    </Menu.Menu>
-                </Menu>
-                    </Segment>
-                {
-                    this.props.children
-                }
+                                <Dropdown item text='user1'
+                                          onChange={this.dropdownMenuChanged}
+                                          options={options}>
+                                </Dropdown>
+                            </Menu.Item>
+                        </Menu.Menu>
+                    </Menu>
+                </Segment>
+                { childrenWithProps }
             </div>
         )
     }

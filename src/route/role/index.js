@@ -36,13 +36,13 @@ class Role extends Component {
     getBaseContent() {
         switch (this.role) {
             case 'student' :
-                return <Student activeMenuItem={this.activeMenuItem}/>;
+                return <Student showToastr={this.props.showToastr} activeMenuItem={this.activeMenuItem}/>;
                 break;
             case 'employee':
-                return <Employee/>;
+                return <Employee showToastr={this.props.showToastr}/>;
                 break;
             case 'assets' :
-                return <Assets/>;
+                return <Assets showToastr={this.props.showToastr}/>;
                 break;
             default :
                 return <Student/>;

@@ -18,7 +18,7 @@ import { Button, Segment, Icon } from 'semantic-ui-react'
 class RegisterStudent extends Component {
     @observable
         steps = [
-            {key:0,index: 0, completed: false, active: false, title: 'Basic', description: 'Fill the basic details'},
+            {key: 0, index: 0, completed: false, active: false, title: 'Basic', description: 'Fill the basic details'},
             {
                 index: 1,
                 completed: false,
@@ -61,6 +61,7 @@ class RegisterStudent extends Component {
     }
 
     nextButtonClicked(e) {
+        e.preventDefault();
         let activeStep = this.getActiveStep();
         if (activeStep.index !== this.steps.length - 1) {
             this.steps[activeStep.index].active = false;
@@ -69,6 +70,8 @@ class RegisterStudent extends Component {
         }
         else {
         }
+        e.target.blur();
+        e.target.focus();
     }
 
     backButtonClicked(e) {
@@ -92,18 +95,22 @@ class RegisterStudent extends Component {
         });
         switch (activeSubComponent.title) {
             case "Basic" :
-                return <Basic nextButtonClicked={this.nextButtonClicked}/>;
+                return <Basic showToastr={ this.props.showToastr }
+                              nextButtonClicked={this.nextButtonClicked}/>;
                 break;
             case "Education Details" :
-                return <Educational nextButtonClicked={this.nextButtonClicked}
+                return <Educational showToastr={ this.props.showToastr }
+                                    nextButtonClicked={this.nextButtonClicked}
                                     backButtonClicked={this.backButtonClicked}/>
                 break;
             case "Verify" :
-                return <VerifyDetails nextButtonClicked={this.nextButtonClicked}
+                return <VerifyDetails showToastr={ this.props.showToastr }
+                                      nextButtonClicked={this.nextButtonClicked}
                                       backButtonClicked={this.backButtonClicked}/>
                 break;
             default:
-                return <Basic nextButtonClicked={this.nextButtonClicked}/>;
+                return <Basic showToastr={ this.props.showToastr }
+                              nextButtonClicked={this.nextButtonClicked}/>;
                 break;
         }
     }
