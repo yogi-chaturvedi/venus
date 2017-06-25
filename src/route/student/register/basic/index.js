@@ -15,7 +15,7 @@ import StateCityJSON from '../../../../util/cities.json';
 
 const options = [
     {key: 'Mr.', text: 'Mr.', value: 'Mr.'},
-    {key: 'Ms.', text: 'Ms.', value: 'Ms.'},
+    {key: 'Ms.', text: 'Ms.', value: 'Ms.'}
 ];
 
 
@@ -83,9 +83,9 @@ class Basic extends Component {
                                   onClose={(e)=>this.onModalClose(false)}/>
                 <Segment clearing>
                     <Button floated="right" icon="pencil" onClick={(e)=>this.onModalClose(true)}
-                            circular size="mini" bordered="false"
+                            circular size="mini"
                             inverted color='red'/>
-                    <Header as='h3' floated='right' color="green">
+                    <Header as='h3' floated='right' color="teal">
                         {RegisterStore.student.session.value} &nbsp;&nbsp;
                     </Header>
                     <Header as='h4' floated='right'>
@@ -94,80 +94,101 @@ class Basic extends Component {
                     <Header as='h4' floated='left'>
                         Class :
                     </Header>
-                    <Header as='h3' floated='left' color="green">
+                    <Header as='h3' floated='left' color="teal">
                         {RegisterStore.student._class.value} &nbsp;&nbsp;
                     </Header>
                     <Header as='h4' floated='left'>
                         Section :
                     </Header>
-                    <Header as='h3' floated='left' color="green">
+                    <Header as='h3' floated='left' color="teal">
                         {RegisterStore.student.section.value} &nbsp;&nbsp;
                     </Header>
                     <Header as='h4' floated='left'>
                         Branch/Stream :
                     </Header>
-                    <Header as='h3' floated='left' color="green">
+                    <Header as='h3' floated='left' color="teal">
                         {RegisterStore.student.branch.value} &nbsp;&nbsp;
                     </Header>
                 </Segment>
-                <Grid columns={2}>
-                    <Grid.Column width={10}>
-                        <Form>
-                            <input type="file" id="file" ref="fileUploader" style={{display: "none"}}
-                                   onChange={this.onImageUploaded} accept="image/x-png,image/gif,image/jpeg"/>
-                            <label>Student's <span className="required-star">*</span></label>
-                            <Form.Field>
-                                <Grid columns='equal'>
+                <Form>
+                    <Grid columns={2}>
+                        <Grid.Column width={12}>
+                            <Segment color='teal' raised>
+                                <Label as='a' color='teal' ribbon>Student's Detail</Label>
+                                <input type="file" id="file" ref="fileUploader" style={{display: "none"}}
+                                       onChange={this.onImageUploaded} accept="image/x-png,image/gif,image/jpeg"/>
+                                <Segment basic>
+                                    <Grid columns='equal'>
+                                        <Grid.Row>
+                                            <Grid.Column>
+                                                <Form.Field size="mini">
+                                                    <Input size="mini" placeholder='First name' labelPosition='left'
+                                                           required
+                                                           label={<Dropdown defaultValue='Mr.' options={options}/>}/>
+                                                </Form.Field>
+                                            </Grid.Column>
+                                            <Grid.Column>
+                                                <Form.Input size="mini" placeholder='Last name' required/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                    </Grid>
+                                </Segment>
+                                <Segment basic>
+                                <Form.Input size="mini" label='Email' placeholder='someone@example.com' required
+                                            icon='mail'
+                                            iconPosition='left'/>
+                                </Segment>
+                                <Segment basic>
+                                <Grid columns="equal">
                                     <Grid.Row>
                                         <Grid.Column>
-                                            <Form.Field size="mini">
-                                                <Input size="mini" placeholder='First name' labelPosition='left'
-                                                       required
-                                                       label={<Dropdown defaultValue='Mr.' options={options}/>}/>
-                                            </Form.Field>
+                                            <Form.Group inline>
+                                                <label>Contact <span className="required-star">*</span></label>
+                                                <Form.Input size="mini"
+                                                            placeholder='Do not include country code like : +91-'
+                                                            required
+                                                            icon='tablet'
+                                                            iconPosition='left'/>
+                                            </Form.Group>
                                         </Grid.Column>
                                         <Grid.Column>
-                                            <Form.Input size="mini" placeholder='Last name' required/>
+                                            <Form.Group size="mini" inline>
+                                                <label>DOB <span className="required-star">*</span></label>
+                                                <DatePicker size="mini" required
+                                                            selected={this.selectedDate}
+                                                            onChange={this.handleDOBChange}
+                                                            isClearable={true}
+                                                            dateFormat="DD/MM/YY"
+                                                            maxDate={Moment()}
+                                                            customInput={<Input size="mini"/>}
+                                                            isClearable={true}
+                                                            placeholderText="DD/MM/YY"
+                                                    />
+                                            </Form.Group>
                                         </Grid.Column>
                                     </Grid.Row>
                                 </Grid>
-                            </Form.Field>
-                            <Form.Input size="mini" label='Email' placeholder='someone@example.com' required icon='mail'
-                                        iconPosition='left'/>
-                            <Grid columns="equal">
-                                <Grid.Row>
-                                    <Grid.Column>
-                                        <Form.Group inline>
-                                            <label>Contact <span className="required-star">*</span></label>
-                                            <Form.Input size="mini"
-                                                        placeholder='Do not include country code like : +91-'
-                                                        required
-                                                        icon='tablet'
-                                                        iconPosition='left'/>
-                                        </Form.Group>
-                                    </Grid.Column>
-                                    <Grid.Column>
-                                        <Form.Group size="mini" inline>
-                                            <label>DOB <span className="required-star">*</span></label>
-                                            <DatePicker size="mini" required
-                                                        selected={this.selectedDate}
-                                                        onChange={this.handleDOBChange}
-                                                        isClearable={true}
-                                                        dateFormat="DD/MM/YY"
-                                                        maxDate={Moment()}
-                                                        customInput={<Input size="mini"/>}
-                                                        isClearable={true}
-                                                        placeholderText="DD/MM/YY"
-                                                />
-                                        </Form.Group>
-                                    </Grid.Column>
-                                </Grid.Row>
-                            </Grid>
-                            <Segment>
-                                <Header as="h5">Father's <span className="required-star">*</span></Header>
+                                </Segment>
+                            </Segment>
+
+                        </Grid.Column>
+                        <Grid.Column width={4}>
+                            <Segment color="teal" loading={this.loadingImage} className="upload-image-section">
+                                <Image onClick={(event) => {this.onPhotoUploadClicked(event)}}
+                                       className='image-styles'
+                                       shape="rounded" bordered src={this.imageData}
+                                       size="medium"/>
+                                <Button fluid content='Upload' icon='upload' labelPosition='left'
+                                        onClick={(event) => {this.onPhotoUploadClicked(event)}}/>
+                            </Segment>
+                        </Grid.Column>
+                    </Grid>
+                    <Grid>
+                        <Grid.Column>
+                            <Segment color='teal' raised>
+                                <Label as="a" color="teal" ribbon>Father's Detail</Label>
+                                <Segment basic>
                                 <Grid columns="equal">
-
-
                                     <Grid.Row>
                                         <Grid.Column>
                                             <Form.Field>
@@ -187,7 +208,7 @@ class Basic extends Component {
                                                         icon='doctor'
                                                         iconPosition='left'/>
                                         </Grid.Column>
-                                        <Grid.Column >
+                                        <Grid.Column>
                                             <Form.Input size="mini" label='Designation'
                                                         placeholder='First Grade, Owner, etc.'
                                                         icon='black tie'
@@ -215,9 +236,11 @@ class Basic extends Component {
                                         </Grid.Column>
                                     </Grid.Row>
                                 </Grid>
+                                    </Segment>
                             </Segment>
-                            <Segment>
-                                <Header as="h5">Mother's <span className="required-star">*</span></Header>
+                            <Segment color="teal">
+                                <Label as="a" color="teal" ribbon>Mother's Detail</Label>
+                                <Segment basic>
                                 <Grid columns='equal'>
                                     <Grid.Row>
                                         <Grid.Column>
@@ -266,9 +289,11 @@ class Basic extends Component {
                                         </Grid.Column>
                                     </Grid.Row>
                                 </Grid>
+                                </Segment>
                             </Segment>
-                            <Segment>
-                                <Header as="h5">Address  <span className="required-star">*</span> </Header>
+                            <Segment color="teal">
+                                <Label as="a" color="teal" ribbon>Address</Label>
+                                <Segment basic>
                                 <Form.Input size="mini" label='Line 1'
                                             placeholder='Enter...'
                                             icon='home'
@@ -278,38 +303,37 @@ class Basic extends Component {
                                             placeholder='Enter...'
                                             icon='home'
                                             iconPosition='left'/>
-                                <Form.Group fluid>
+                                <Form.Group>
                                     <Form.Dropdown onChange={(e,value)=>{this.stateChange(value)}}
                                                    text='Select State'
                                                    search
                                                    minCharacters={0}
                                                    width={5}
-                                                   options={this.stateOptions}
-                                                   fluid/>
+                                                   options={this.stateOptions}/>
                                     <Form.Dropdown options={this.cityOptions}
                                                    text='Select City'
                                                    search
-                                                   width={5}
-                                                   fluid/>
+                                                   width={5}/>
                                 </Form.Group>
+                                    </Segment>
                             </Segment>
                             <Form.Field>
                                 <Divider hidden vertical/>
                             </Form.Field>
-                        </Form>
-                    </Grid.Column>
-                    <Grid.Column width={6}>
-                        <br/>
-                        <Segment loading={this.loadingImage} className="upload-image-section" compact>
-                            <Image onClick={(event) => {this.onPhotoUploadClicked(event)}}
-                                   className='image-styles'
-                                   shape="rounded" bordered src={this.imageData}
-                                   size="small"/>
-                            <Button fluid content='Upload' icon='upload' labelPosition='left'
-                                    onClick={(event) => {this.onPhotoUploadClicked(event)}}/>
-                        </Segment>
-                    </Grid.Column>
-                </Grid>
+                        </Grid.Column>
+                        {/*<Grid.Column width={6}>
+                         <br/>
+                         <Segment loading={this.loadingImage} className="upload-image-section" compact>
+                         <Image onClick={(event) => {this.onPhotoUploadClicked(event)}}
+                         className='image-styles'
+                         shape="rounded" bordered src={this.imageData}
+                         size="small"/>
+                         <Button fluid content='Upload' icon='upload' labelPosition='left'
+                         onClick={(event) => {this.onPhotoUploadClicked(event)}}/>
+                         </Segment>
+                         </Grid.Column>*/}
+                    </Grid>
+                </Form>
             </Segment>
         );
     }
