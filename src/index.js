@@ -9,7 +9,6 @@ import './assets/css/animate.css';
 import './assets/css/toastr.min.css';
 import {observer} from 'mobx-react';
 
-
 let root = document.createElement('div');
 root.id = "root";
 document.body.appendChild( root );
