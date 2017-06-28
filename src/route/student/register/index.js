@@ -142,5 +142,6 @@ class RegisterStudent extends Component {
         );
     }
 }
+
 export default RegisterStudent;
 

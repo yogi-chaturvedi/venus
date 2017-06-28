@@ -32,12 +32,12 @@ class Result extends Component {
                                     <Segment>
                                         <Label attached="top" color="blue"> First Name</Label>
 
-                                        <div>Amit</div>
+                                        <div>Mudit</div>
                                     </Segment>
                                     <Segment>
                                         <Label attached="top" color="blue"> Last Name</Label>
 
-                                        <div>Sirohiya</div>
+                                        <div>Ojha</div>
                                     </Segment>
                                     <Segment>
                                         <Label attached="top" color="blue">DOB</Label>
@@ -49,18 +49,18 @@ class Result extends Component {
                                     <Segment>
                                         <Label attached="top" color="blue">Email</Label>
 
-                                        <div>amitsirohiya22@gmail.com</div>
+                                        <div>ojha.mudit@gmail.com</div>
                                     </Segment>
                                     <Segment>
                                         <Label attached="top" color="blue">Contact</Label>
 
-                                        <div>+918233229747</div>
+                                        <div>+91-9876543210</div>
                                     </Segment>
                                 </Segment.Group>
                                 <Segment>
                                     <Label attached="top" color="blue">Address</Label>
 
-                                    <div>12, Prithviraj Nagar, Jaipur, Rajasthan</div>
+                                    <div>12, Prithviraj Nagar, Bundi, Rajasthan</div>
                                 </Segment>
 
                             </Segment>
@@ -111,7 +111,7 @@ class Result extends Component {
                                         <Grid columns={2} divided>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Name</span></Grid.Column>
-                                                <Grid.Column width={10}>Rajesh Sirohiya</Grid.Column>
+                                                <Grid.Column width={10}>Nhi btaunga</Grid.Column>
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">DOB</span></Grid.Column>
@@ -129,11 +129,11 @@ class Result extends Component {
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Email</span></Grid.Column>
-                                                <Grid.Column width={10}>rajesh1964@gmail.com</Grid.Column>
+                                                <Grid.Column width={10}>nhibtaunga1964@gmail.com</Grid.Column>
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Mobile</span></Grid.Column>
-                                                <Grid.Column width={10}>9764321357</Grid.Column>
+                                                <Grid.Column width={10}>9876543210</Grid.Column>
                                             </Grid.Row>
                                         </Grid>
                                     </Segment>
@@ -142,7 +142,7 @@ class Result extends Component {
                                         <Grid columns={2} divided>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Name</span></Grid.Column>
-                                                <Grid.Column width={10}>Gayatri Sirohiya</Grid.Column>
+                                                <Grid.Column width={10}>Bola na nhi btaunga</Grid.Column>
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">DOB</span></Grid.Column>
@@ -164,7 +164,7 @@ class Result extends Component {
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Mobile</span></Grid.Column>
-                                                <Grid.Column width={10}>8764323457</Grid.Column>
+                                                <Grid.Column width={10}>9876543210</Grid.Column>
                                             </Grid.Row>
                                         </Grid>
                                     </Segment>

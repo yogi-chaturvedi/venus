@@ -49,6 +49,7 @@
     "dev": "webpack-dev-server --hot --host localhost --config=./webpack.dev.config.js",
     "build": "webpack --config webpack.dev.config.js",
     "start": "react-scripts start",
+	"b": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

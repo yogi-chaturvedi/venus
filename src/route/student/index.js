@@ -43,7 +43,7 @@ class Student extends Component {
                 return <Fee showToastr={ this.props.showToastr }/>
                 break;
             default:
-                return <Registration showToastr={ this.props.showToastr }/>
+                return <List showToastr={ this.props.showToastr }/>
                 break;
         }
     }
