@@ -35,15 +35,15 @@ class Login extends Component {
                                 Forgot Password ?
                             </a>
                         </Form.Field>
-                        <Button.Group vertical>
-                            <Button positive animated onClick={ (e) => this.handleSignIn(e) }>
+                        <Button.Group vertical className="login-buttons-container">
+                            <Button positive animated fluid onClick={ (e) => this.handleSignIn(e) }>
                                 <Button.Content visible>Sign In</Button.Content>
                                 <Button.Content hidden>
                                     <Icon name='right arrow'/>
                                 </Button.Content>
                             </Button>
                             <Divider horizontal>Or</Divider>
-                            <Button secondary animated
+                            <Button secondary animated fluid
                                     onClick={ (e) => { e.preventDefault(); browserHistory.push('/signup')}}>
                                 <Button.Content visible>Sign Up</Button.Content>
                                 <Button.Content hidden>

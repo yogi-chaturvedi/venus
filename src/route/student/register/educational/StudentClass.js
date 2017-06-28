@@ -7,7 +7,7 @@ import { Button, Grid, Image, Label, Segment, Divider, Form ,Header} from 'seman
 class StudentClass extends Component {
     render() {
         return (
-            <Segment>
+            <Segment basic>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={2}>

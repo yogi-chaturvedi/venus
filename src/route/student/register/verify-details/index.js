@@ -21,7 +21,7 @@ class Result extends Component {
 
     render() {
         return (
-            <Segment>
+            <Segment basic className="no-padding-segment">
                 <div id="myDivToPrint">
                     <Label size="large" onClick={this.onPrintClick} as='a' color='red' corner='right' icon="print"/>
                     <Grid columns={2}>
@@ -67,7 +67,6 @@ class Result extends Component {
                         </Grid.Column>
                         <Grid.Column width={4}>
                             <Divider hidden/>
-                            <Label as='a' color='blue' ribbon="right">Picture</Label>
                             <Image className='image-styles'
                                    shape="rounded" bordered
                                    src={USER_IMAGE}

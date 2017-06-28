@@ -53,12 +53,6 @@ class SessionDataModal extends Component {
                        closeOnEscape={false}
                        closeOnRootNodeClick={false}>
                     <Header icon="student" content="Select details" color="green"/>
-
-                    <Message warning>
-                        <Icon name='help'/>
-                        All fields are required
-                    </Message>
-                    
                     <Modal.Content>
                         <Form>
                             <Form.Group inline>
@@ -95,12 +89,17 @@ class SessionDataModal extends Component {
                             </Form.Group>
                         </Form>
                     </Modal.Content>
+                    <Message warning>
+                        <Icon name='help'/>
+                        All fields are required
+                    </Message>
                     <Modal.Actions>
                         <Button secondary icon='trash outline' labelPosition='right' content="Clear"
                                 onClick={this.clearForm}/>
                         <Button positive icon='checkmark' labelPosition='right'
                                 content="Submit" onClick={(e)=>{this.onClose(e)}}/>
                     </Modal.Actions>
+
                 </Modal>
 
             </div>

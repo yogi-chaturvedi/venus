@@ -23,7 +23,7 @@ class List extends Component {
 
     render() {
         return (
-            <Segment>
+            <Segment basic color="teal" className="no-padding-segment">
                 <Segment>
                     <Label as='a' size="large" color='teal' ribbon>Student List</Label>
                     <Input
@@ -34,8 +34,7 @@ class List extends Component {
                         iconPosition='left'
                         placeholder='Search...'
                         />
-                </Segment>
-                <Table celled color="teal">
+                <Table celled>
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>Registration Number</Table.HeaderCell>
@@ -91,7 +90,7 @@ class List extends Component {
                         </Table.Row>
                     </Table.Footer>
                 </Table>
-
+                </Segment>
             </Segment>
         );
     }

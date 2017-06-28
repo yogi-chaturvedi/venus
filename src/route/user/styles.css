@@ -18,24 +18,28 @@
     vertical-align: middle;
 }
 
-.login-logo {
+.login-logo, .signup-logo, .verify-user-logo {
     margin-top: -21%;
-    margin-left: 35%;
-    width: 115px;
+    margin-left: 31%;
+    width: 114px;
 }
 
 .signup-logo {
     margin-top: -21%;
-    margin-left: 35%;
-    width: 115px;
+    margin-left: 37%;
+    width: 120px;
 }
 
-.verify-user-logo {
-    margin-top: -21%;
-    margin-left: 35%;
-    width: 115px;
-}
+/*.verify-user-logo {*/
+    /*margin-top: -21%;*/
+    /*margin-left: 31%;*/
+    /*width: 114px;*/
+/*}*/
 
 i.blue.calendar.large.bordered.icon.calender-icon {
     height: 38px;
+}
+
+.login-buttons-container{
+    width : 100%
 }

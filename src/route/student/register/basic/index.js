@@ -78,10 +78,10 @@ class Basic extends Component {
 
     render() {
         return (
-            <Segment>
+            <Segment basic className="no-padding-segment">
                 <SessionDataModal showToastr={ this.props.showToastr } open={this.showModal}
                                   onClose={(e)=>this.onModalClose(false)}/>
-                <Segment clearing>
+                <Segment color="teal" raised clearing>
                     <Button floated="right" icon="pencil" onClick={(e)=>this.onModalClose(true)}
                             circular size="mini"
                             inverted color='red'/>
@@ -112,14 +112,14 @@ class Basic extends Component {
                 </Segment>
                 <Form>
                     <Grid columns={2}>
-                        <Grid.Column width={12}>
+                        <Grid.Column width={11}>
                             <Segment color='teal' raised>
                                 <Label as='a' color='teal' ribbon>Student's Detail</Label>
                                 <input type="file" id="file" ref="fileUploader" style={{display: "none"}}
                                        onChange={this.onImageUploaded} accept="image/x-png,image/gif,image/jpeg"/>
                                 <Segment basic>
                                     <Grid columns='equal'>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Field size="mini">
                                                     <Input size="mini" placeholder='First name' labelPosition='left'
@@ -131,16 +131,15 @@ class Basic extends Component {
                                                 <Form.Input size="mini" placeholder='Last name' required/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                    </Grid>
-                                </Segment>
-                                <Segment basic>
-                                    <Form.Input size="mini" label='Email' placeholder='someone@example.com' required
-                                                icon='mail'
-                                                iconPosition='left'/>
-                                </Segment>
-                                <Segment basic>
-                                    <Grid columns="equal">
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
+                                            <Grid.Column>
+                                                <Form.Input size="mini" label='Email' placeholder='someone@example.com'
+                                                            required
+                                                            icon='mail'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Group inline>
                                                     <label>Contact <span className="required-star">*</span></label>
@@ -173,23 +172,23 @@ class Basic extends Component {
 
                         </Grid.Column>
                         <Grid.Column width={4}>
-                            <Segment color="teal" loading={this.loadingImage} className="upload-image-section">
+                            <Segment color="teal" loading={this.loadingImage} className="upload-image-section" raised>
                                 <Image onClick={(event) => {this.onPhotoUploadClicked(event)}}
                                        className='image-styles'
                                        shape="rounded" bordered src={this.imageData}
-                                       size="medium"/>
+                                       size="small"/>
                                 <Button fluid content='Upload' icon='upload' labelPosition='left'
                                         onClick={(event) => {this.onPhotoUploadClicked(event)}}/>
                             </Segment>
                         </Grid.Column>
                     </Grid>
                     <Grid>
-                        <Grid.Column>
+                        <Grid.Column width={11}>
                             <Segment color='teal' raised>
                                 <Label as="a" color="teal" ribbon>Father's Detail</Label>
                                 <Segment basic>
                                     <Grid columns="equal">
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Field>
                                                     <Input size="mini" placeholder='First name' labelPosition='left'
@@ -201,7 +200,7 @@ class Basic extends Component {
                                                 <Form.Input size="mini" placeholder='Last name' required/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Occupation'
                                                             placeholder='Like:- Buisnessman, Govt. Employee, etc.'
@@ -221,7 +220,7 @@ class Basic extends Component {
                                                             iconPosition='left'/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Contact'
                                                             placeholder='Do not include the country code'
@@ -238,11 +237,11 @@ class Basic extends Component {
                                     </Grid>
                                 </Segment>
                             </Segment>
-                            <Segment color="teal">
+                            <Segment color="teal" raised>
                                 <Label as="a" color="teal" ribbon>Mother's Detail</Label>
                                 <Segment basic>
                                     <Grid columns='equal'>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Field>
                                                     <Input size="mini" placeholder='First name' labelPosition='left'
@@ -254,7 +253,7 @@ class Basic extends Component {
                                                 <Form.Input size="mini" placeholder='Last name' required/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Occupation'
                                                             placeholder='Like:- Buisnessman, Govt. Employee, etc.'
@@ -274,7 +273,7 @@ class Basic extends Component {
                                                             iconPosition='left'/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Contact'
                                                             placeholder='Do not include the country code'
@@ -291,7 +290,7 @@ class Basic extends Component {
                                     </Grid>
                                 </Segment>
                             </Segment>
-                            <Segment color="teal">
+                            <Segment color="teal" raised>
                                 <Label as="a" color="teal" ribbon>Address</Label>
                                 <Segment basic>
                                     <Form.Input size="mini" label='Line 1'
