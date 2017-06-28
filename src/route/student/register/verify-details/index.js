@@ -2,7 +2,6 @@
  * Created by Yogesh Chaturvedi on 11-06-2017.
  */
 import React, {Component} from 'react';
-import {observable} from 'mobx';
 import { observer } from 'mobx-react';
 import { Grid, Image, Label, Segment, Divider } from 'semantic-ui-react'
 import USER_IMAGE from '../../../../assets/image/student_user_image.png';

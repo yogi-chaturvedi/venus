@@ -4,7 +4,7 @@
 import React, {Component} from 'react';
 import {observable} from 'mobx';
 import { observer } from 'mobx-react';
-import { Grid, Image, Label, Segment, Divider, Form ,Header, Button} from 'semantic-ui-react';
+import { Label, Segment, Button} from 'semantic-ui-react';
 import StudentClass from './StudentClass';
 import _ from 'lodash';
 
@@ -23,8 +23,8 @@ class Result extends Component {
             <Segment color='teal' raised>
                 <Label as='a' color='teal' ribbon>Previous Class Details</Label>
                 {
-                    this.studentClassList.map((studentClass)=> {
-                        return <StudentClass id={studentClass} onDelete={this.onRemoveClassClicked}/>
+                    this.studentClassList.map((studentClass, index)=> {
+                        return <StudentClass key={index} id={studentClass} onDelete={this.onRemoveClassClicked}/>
                     })
                 }
                 <Button basic color="green" size="mini"

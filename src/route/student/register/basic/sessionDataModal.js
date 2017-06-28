@@ -1,5 +1,5 @@
 import React ,{Component}  from 'react';
-import { Button, Modal, Image, Header , Dropdown ,Label , Form, Message, Icon} from 'semantic-ui-react'
+import { Button, Modal, Header , Form, Message, Icon} from 'semantic-ui-react'
 import RegisterStore from '../store';
 import _ from 'lodash';
 import {observable} from 'mobx';

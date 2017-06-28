@@ -4,14 +4,13 @@
 import React, {Component} from 'react';
 
 import {observable} from 'mobx';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import { Grid } from 'semantic-ui-react';
 import MenuConstants from '../../constants/menu';
 import Employee from '../employee';
 import Student from '../student';
 import Assets from '../assets';
 import Menu from '../../component/menu';
-import { browserHistory } from 'react-router';
 
 @observer
 class Role extends Component {
@@ -37,13 +36,10 @@ class Role extends Component {
         switch (this.role) {
             case 'student' :
                 return <Student showToastr={this.props.showToastr} activeMenuItem={this.activeMenuItem}/>;
-                break;
             case 'employee':
                 return <Employee showToastr={this.props.showToastr}/>;
-                break;
             case 'assets' :
                 return <Assets showToastr={this.props.showToastr}/>;
-                break;
             default :
                 return <Student/>;
         }

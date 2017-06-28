@@ -2,7 +2,6 @@
  * Created by Yogesh Chaturvedi on 11-06-2017.
  */
 import React, {Component} from 'react';
-import {observable} from 'mobx';
 import { observer } from 'mobx-react';
 import { Segment,Table,Menu,Label,Icon,Dropdown, Input } from 'semantic-ui-react'
 import StaticStudentList from '../../../constants/StudentStaticList';
@@ -10,10 +9,6 @@ import './styles.css';
 
 @observer
 class List extends Component {
-    constructor(props) {
-        super(props);
-
-    }
 
     componentWillMount() {
         this.setState({
@@ -28,7 +23,6 @@ class List extends Component {
                     <Label as='a' size="large" color='teal' ribbon>Student List</Label>
                     <Input
                         className="search-box"
-                        floated="right"
                         action={<Dropdown button basic floating options={[{key:0,value:"All",text:"All"},{key:1,value:"1",text:"1"},{key:2,value:"2",text:"2"},{key:3,value:"3",text:"3"},{key:4,value:"4",text:"4"}]} defaultValue='All' />}
                         icon='search'
                         iconPosition='left'
@@ -49,7 +43,7 @@ class List extends Component {
                     <Table.Body>
                         {
                             this.state.studentList.map((student, index)=> {
-                                return <Table.Row>
+                                return <Table.Row key={index}>
                                     <Table.Cell>{student.regId}</Table.Cell>
                                     <Table.Cell>{student.name}</Table.Cell>
                                     <Table.Cell>{student.fatherName}</Table.Cell>

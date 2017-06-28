@@ -2,7 +2,7 @@
  * Created by Yogesh Chaturvedi on 11-06-2017.
  */
 import React, {Component} from 'react';
-import { Button, Form, Segment, Link, Icon, Divider } from 'semantic-ui-react'
+import { Button, Form, Segment, Icon, Divider } from 'semantic-ui-react'
 import { browserHistory } from 'react-router';
 import '../styles.css';
 import LogoLogin from '../../../assets/image/logo-login.png';
@@ -25,7 +25,7 @@ class Login extends Component {
         return (
             <div className="login-form-container">
                 <Segment className={"login-box"}>
-                    <img className="login-logo" src={LogoLogin}/>
+                    <img className="login-logo" alt="login-logo" src={LogoLogin}/>
                     <Form>
                         <Form.Input fluid label='User name' placeholder='User name' icon="user" iconPosition='left'/>
                         <Form.Input fluid type="Password" label='Password' placeholder='Password' icon="lock"

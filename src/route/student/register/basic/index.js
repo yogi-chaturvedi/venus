@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {observable} from 'mobx';
 import { observer } from 'mobx-react';
 import USER_IMAGE from '../../../../assets/image/student_user_image.png';
-import { Button, Form, Segment, Link, Icon, Input, Divider ,Label ,Dropdown,Card,Grid, Image, Header, Container,Item } from 'semantic-ui-react'
+import { Button, Form, Segment, Input, Divider, Label, Dropdown, Grid, Image, Header } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker';
 import Moment from 'moment';
 import SessionDataModal from './sessionDataModal';
@@ -160,7 +160,6 @@ class Basic extends Component {
                                                                 dateFormat="DD/MM/YY"
                                                                 maxDate={Moment()}
                                                                 customInput={<Input size="mini"/>}
-                                                                isClearable={true}
                                                                 placeholderText="DD/MM/YY"
                                                         />
                                                 </Form.Group>

@@ -4,15 +4,14 @@
 
 import React, {Component} from 'react';
 import {observable} from 'mobx';
-import { inject, observer } from 'mobx-react';
-import {browserHistory} from 'react-router';
+import { observer } from 'mobx-react';
 import Steps from '../../../component/steps';
 import _ from 'lodash';
 import './styles.css';
 import Basic from './basic';
 import Educational from './educational';
 import VerifyDetails from './verify-details';
-import { Button, Segment, Icon } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 
 @observer
 class RegisterStudent extends Component {
@@ -97,21 +96,17 @@ class RegisterStudent extends Component {
             case "Basic" :
                 return <Basic showToastr={ this.props.showToastr }
                               nextButtonClicked={this.nextButtonClicked}/>;
-                break;
             case "Education Details" :
                 return <Educational showToastr={ this.props.showToastr }
                                     nextButtonClicked={this.nextButtonClicked}
                                     backButtonClicked={this.backButtonClicked}/>
-                break;
             case "Verify" :
                 return <VerifyDetails showToastr={ this.props.showToastr }
                                       nextButtonClicked={this.nextButtonClicked}
                                       backButtonClicked={this.backButtonClicked}/>
-                break;
             default:
                 return <Basic showToastr={ this.props.showToastr }
                               nextButtonClicked={this.nextButtonClicked}/>;
-                break;
         }
     }
 
