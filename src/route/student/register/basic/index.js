@@ -12,6 +12,7 @@ import SessionDataModal from './sessionDataModal';
 import RegisterStore from '../store';
 import _ from 'lodash';
 import StateCityJSON from '../../../../util/cities.json';
+import statesAndCities from '../../../../util/states-cities';
 
 const options = [
     {key: 'Mr.', text: 'Mr.', value: 'Mr.'},
@@ -24,10 +25,10 @@ class Basic extends Component {
     @observable selectedDate;
     @observable loadingImage = false;
     @observable imageData = USER_IMAGE;
-    @observable showModal = true;
+    @observable showModal = true; 
     @observable selectedState = '';
-    @observable cityOptions = [];
-    @observable stateOptions = [];
+    @observable selectedCity = '';
+    @observable cityOptions = null;
 
     constructor(props) {
         super(props);
@@ -39,7 +40,6 @@ class Basic extends Component {
         this.onModalClose();
         this.getCityOptions = this.getCityOptions.bind(this);
         this.getStateOptions = this.getStateOptions.bind(this);
-        this.getStateOptions();
         this.stateChange = this.stateChange.bind(this);
     }
 
@@ -48,23 +48,22 @@ class Basic extends Component {
 
     getCityOptions(value) {
         let $this = this;
-        this.cityOptions = _.filter(StateCityJSON, (item)=> {
-            return item.state === value;
+        let matchedState = _.find(statesAndCities, function (state) {
+            return state.value === $this.selectedState;
         });
-        this.cityOptions = _.map(this.cityOptions, (item, index)=> {
-            return {key: index, text: item.name, value: item.name};
-        });
+        this.cityOptions = _.map(matchedState.cities, function (city) {
+            return { key : city.key, text : city.name, value : city.name }
+        })
     }
 
     getStateOptions() {
-        let $this = this;
-        this.stateOptions = _.map(StateCityJSON, (item, index)=> {
-            return item.state;
+        return _.map(statesAndCities, (item, index)=> {
+            return {key: item.key, text: item.text, value: item.value};
         });
-        this.stateOptions = _.uniq(this.stateOptions);
-        this.stateOptions = _.map(this.stateOptions, (state, index)=> {
-            return {key: index, text: state, value: state};
-        })
+        //this.stateOptions = _.uniq(this.stateOptions);
+        //this.stateOptions = _.map(this.stateOptions, (state, index)=> {
+        //    return {key: index, text: state, value: state};
+        //})
     }
 
     onPhotoUploadClicked(e) {
@@ -302,18 +301,27 @@ class Basic extends Component {
                                                 icon='home'
                                                 iconPosition='left'/>
                                     <Form.Group>
-                                        <Label color="teal" basic>State</Label>
-                                        <Form.Dropdown onChange={(e,value)=>{this.stateChange(value)}}
-                                                       text='Select State'
-                                                       search
-                                                       minCharacters={0}
-                                                       width={5}
-                                                       options={this.stateOptions}/>
-                                        <Label color="teal" basic>City</Label>
-                                        <Form.Dropdown options={this.cityOptions}
-                                                       text='Select City'
-                                                       search
-                                                       width={5}/>
+                                        <Form.Field>State
+                                        <Dropdown onChange={(e,value)=>{this.stateChange(e, value)}}
+                                                  selection search inline
+                                                  width={5}
+                                                  upward={true}
+                                                  minCharacters={0}
+                                                  placeholder="Select State"
+                                                  value={this.selectedState}
+                                                  options={this.getStateOptions()}/>
+                                        </Form.Field>
+                                        <Form.Field>City
+                                        <Dropdown onChange={(e,value)=>{this.cityChange(e, value)}}
+                                                  search selection inline
+                                                  width={5}
+                                                  upward={true}
+                                                  minCharacters={0}
+                                                  placeholder="Select City"
+                                                  disabled={!this.selectedState}
+                                                  options={this.cityOptions}
+                                                  value={this.selectedCity}/>
+                                        </Form.Field>
 
                                     </Form.Group>
                                 </Segment>
@@ -372,8 +380,14 @@ class Basic extends Component {
         }
     }
 
-    stateChange(value) {
-        this.getCityOptions(value.value);
+    stateChange(e, state) {
+        this.selectedCity = "";
+        this.selectedState = state.value;
+        this.getCityOptions(state.value);
+    }
+
+    cityChange(e,city) {
+        this.selectedCity = city.value;
     }
 }
 export default Basic;
