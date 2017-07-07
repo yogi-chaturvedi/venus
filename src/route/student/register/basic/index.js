@@ -28,7 +28,7 @@ class Basic extends Component {
     @observable showModal = true; 
     @observable selectedState = '';
     @observable selectedCity = '';
-    @observable cityOptions = null;
+    cityOptions = [];
 
     constructor(props) {
         super(props);
@@ -78,7 +78,7 @@ class Basic extends Component {
     render() {
         return (
             <Segment basic className="no-padding-segment">
-                <SessionDataModal showToastr={ this.props.showToastr } open={this.showModal}
+                <SessionDataModal showToastr={ this.props.showToastr } open={false}
                                   onClose={(e)=>this.onModalClose(false)}/>
                 <Segment color="teal" raised clearing>
                     <Button floated="right" icon="pencil" onClick={(e)=>this.onModalClose(true)}
@@ -303,7 +303,7 @@ class Basic extends Component {
                                     <Form.Group>
                                         <Form.Field>State
                                         <Dropdown onChange={(e,value)=>{this.stateChange(e, value)}}
-                                                  selection search inline
+                                                  selection search
                                                   width={5}
                                                   upward={true}
                                                   minCharacters={0}
@@ -313,7 +313,7 @@ class Basic extends Component {
                                         </Form.Field>
                                         <Form.Field>City
                                         <Dropdown onChange={(e,value)=>{this.cityChange(e, value)}}
-                                                  search selection inline
+                                                  search selection
                                                   width={5}
                                                   upward={true}
                                                   minCharacters={0}
