@@ -4,10 +4,10 @@
 import {observable} from 'mobx';
 
 class Student {
-    @observable _class = {value: '', valid: 'true'};
-    @observable section = {value: '', valid: 'true'};
-    @observable session = {value: '', valid: 'true'};
-    @observable branch = {value: '', valid: 'true'};
+    @observable _class = {value: '', valid: true};
+    @observable section = {value: '', valid: true};
+    @observable session = {value: '', valid: true};
+    @observable branch = {value: '', valid: true};
 
     @observable basicDetail = {
         name: {

@@ -78,7 +78,7 @@ class Basic extends Component {
     render() {
         return (
             <Segment basic className="no-padding-segment">
-                <SessionDataModal showToastr={ this.props.showToastr } open={false}
+                <SessionDataModal showToastr={ this.props.showToastr } open={this.showModal}
                                   onClose={(e)=>this.onModalClose(false)}/>
                 <Segment color="teal" raised clearing>
                     <Button floated="right" icon="pencil" onClick={(e)=>this.onModalClose(true)}

@@ -11,7 +11,7 @@ class Student extends Component {
     render() {
         return (
             <div>
-                <Menu stackable icon="labeled" vertical pointing size="small">
+                <Menu stackable icon="labeled" vertical pointing size="mini">
                     {
                         this.props.menuItems.map((item)=> {
                             return <Menu.Item key={item.name} name={item.name} color='teal'
