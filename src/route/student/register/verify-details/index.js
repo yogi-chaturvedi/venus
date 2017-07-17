@@ -2,7 +2,6 @@
  * Created by Yogesh Chaturvedi on 11-06-2017.
  */
 import React, {Component} from 'react';
-import {observable} from 'mobx';
 import { observer } from 'mobx-react';
 import { Grid, Image, Label, Segment, Divider } from 'semantic-ui-react'
 import USER_IMAGE from '../../../../assets/image/student_user_image.png';
@@ -21,7 +20,7 @@ class Result extends Component {
 
     render() {
         return (
-            <Segment>
+            <Segment basic className="no-padding-segment">
                 <div id="myDivToPrint">
                     <Label size="large" onClick={this.onPrintClick} as='a' color='red' corner='right' icon="print"/>
                     <Grid columns={2}>
@@ -32,12 +31,12 @@ class Result extends Component {
                                     <Segment>
                                         <Label attached="top" color="blue"> First Name</Label>
 
-                                        <div>Amit</div>
+                                        <div>Mudit</div>
                                     </Segment>
                                     <Segment>
                                         <Label attached="top" color="blue"> Last Name</Label>
 
-                                        <div>Sirohiya</div>
+                                        <div>Ojha</div>
                                     </Segment>
                                     <Segment>
                                         <Label attached="top" color="blue">DOB</Label>
@@ -49,25 +48,24 @@ class Result extends Component {
                                     <Segment>
                                         <Label attached="top" color="blue">Email</Label>
 
-                                        <div>amitsirohiya22@gmail.com</div>
+                                        <div>ojha.mudit@gmail.com</div>
                                     </Segment>
                                     <Segment>
                                         <Label attached="top" color="blue">Contact</Label>
 
-                                        <div>+918233229747</div>
+                                        <div>+91-9876543210</div>
                                     </Segment>
                                 </Segment.Group>
                                 <Segment>
                                     <Label attached="top" color="blue">Address</Label>
 
-                                    <div>12, Prithviraj Nagar, Jaipur, Rajasthan</div>
+                                    <div>12, Prithviraj Nagar, Bundi, Rajasthan</div>
                                 </Segment>
 
                             </Segment>
                         </Grid.Column>
                         <Grid.Column width={4}>
                             <Divider hidden/>
-                            <Label as='a' color='blue' ribbon="right">Picture</Label>
                             <Image className='image-styles'
                                    shape="rounded" bordered
                                    src={USER_IMAGE}
@@ -111,7 +109,7 @@ class Result extends Component {
                                         <Grid columns={2} divided>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Name</span></Grid.Column>
-                                                <Grid.Column width={10}>Rajesh Sirohiya</Grid.Column>
+                                                <Grid.Column width={10}>Nhi btaunga</Grid.Column>
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">DOB</span></Grid.Column>
@@ -129,11 +127,11 @@ class Result extends Component {
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Email</span></Grid.Column>
-                                                <Grid.Column width={10}>rajesh1964@gmail.com</Grid.Column>
+                                                <Grid.Column width={10}>nhibtaunga1964@gmail.com</Grid.Column>
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Mobile</span></Grid.Column>
-                                                <Grid.Column width={10}>9764321357</Grid.Column>
+                                                <Grid.Column width={10}>9876543210</Grid.Column>
                                             </Grid.Row>
                                         </Grid>
                                     </Segment>
@@ -142,7 +140,7 @@ class Result extends Component {
                                         <Grid columns={2} divided>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Name</span></Grid.Column>
-                                                <Grid.Column width={10}>Gayatri Sirohiya</Grid.Column>
+                                                <Grid.Column width={10}>Bola na nhi btaunga</Grid.Column>
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">DOB</span></Grid.Column>
@@ -164,7 +162,7 @@ class Result extends Component {
                                             </Grid.Row>
                                             <Grid.Row>
                                                 <Grid.Column width={6}><span color="blue">Mobile</span></Grid.Column>
-                                                <Grid.Column width={10}>8764323457</Grid.Column>
+                                                <Grid.Column width={10}>9876543210</Grid.Column>
                                             </Grid.Row>
                                         </Grid>
                                     </Segment>

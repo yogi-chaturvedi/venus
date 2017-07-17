@@ -4,7 +4,7 @@
     margin-top: 1%;
 }
 
-.ui.compact.segment.upload-image-section {
+.upload-image-section {
     margin-top: 0;
     left: 25%;
 }
@@ -51,4 +51,12 @@ button.ui.red.mini.basic.circular.icon.button {
     button.ui.secondary.animated.left.floated.button {
         display: none;
     }
+}
+
+.ui.segment.no-padding-segment{
+    padding: 0;
+}
+
+.ui.grid > .row.form-row{
+    padding: 5px;
 }

@@ -3,8 +3,7 @@
  */
 import React, {Component} from 'react';
 import {observable} from 'mobx';
-import { inject, observer } from 'mobx-react';
-import Menu from '../../component/menu';
+import { observer } from 'mobx-react';
 import Registration from './register';
 import List from './list';
 import Result from './result';
@@ -29,22 +28,16 @@ class Student extends Component {
         switch (this.activeMenuItem) {
             case 'New Registration' :
                 return <Registration showToastr={ this.props.showToastr }/>
-                break;
             case 'List' :
                 return <List showToastr={ this.props.showToastr }/>
-                break;
             case 'Result' :
                 return <Result showToastr={ this.props.showToastr }/>
-                break;
             case 'Attendance' :
                 return <Attendance showToastr={ this.props.showToastr }/>
-                break;
             case 'Fee' :
                 return <Fee showToastr={ this.props.showToastr }/>
-                break;
             default:
-                return <Registration showToastr={ this.props.showToastr }/>
-                break;
+                return <List showToastr={ this.props.showToastr }/>
         }
     }
 

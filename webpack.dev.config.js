@@ -49,7 +49,6 @@ module.exports = {
   devtool: 'eval',
   devServer: {
     contentBase: OUTPUT_DIR,
-	historyApiFallback: true,
 	hot: true,
     stats: {
       colors: true,

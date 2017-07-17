@@ -6,7 +6,7 @@ import { Menu , Segment ,Input, Dropdown}  from 'semantic-ui-react';
 
 import 'semantic-ui-css/semantic.min.css';
 import {observable} from 'mobx';
-import { inject, observer } from 'mobx-react';
+import { observer } from 'mobx-react';
 import {browserHistory} from 'react-router';
 import UserImage from '../../assets/image/user.png';
 import LogoImage from '../../assets/image/logo.png';
@@ -64,7 +64,7 @@ class Header extends Component {
                 <Segment>
                     <Menu secondary stackable color={"teal"}>
                         <Menu.Item name="home" onClick={this.menuClicked}>
-                            <img src={LogoImage}/></Menu.Item>
+                            <img alt="app-logo" src={LogoImage}/></Menu.Item>
                         <Menu.Item name="student" onClick={this.menuClicked} active={this.active === "student"}>
                         </Menu.Item>
                         <Menu.Item name="employee" onClick={this.menuClicked} active={this.active === "employee"}>
@@ -77,7 +77,7 @@ class Header extends Component {
                             </Menu.Item>
                             <Menu.Item name='logout'>
                                 <span>
-                                <img src={UserImage} height="35px" width="35px"/></span>
+                                <img alt="user-pic" src={UserImage} height="35px" width="35px"/></span>
                                 <Dropdown item text='user1'
                                           onChange={this.dropdownMenuChanged}
                                           options={options}>

@@ -5,13 +5,14 @@ import React, {Component} from 'react';
 import {observable} from 'mobx';
 import { observer } from 'mobx-react';
 import USER_IMAGE from '../../../../assets/image/student_user_image.png';
-import { Button, Form, Segment, Link, Icon, Input, Divider ,Label ,Dropdown,Card,Grid, Image, Header, Container,Item } from 'semantic-ui-react'
+import { Button, Form, Segment, Input, Divider, Label, Dropdown, Grid, Image, Header } from 'semantic-ui-react'
 import DatePicker from 'react-datepicker';
 import Moment from 'moment';
 import SessionDataModal from './sessionDataModal';
 import RegisterStore from '../store';
 import _ from 'lodash';
 import StateCityJSON from '../../../../util/cities.json';
+import statesAndCities from '../../../../util/states-cities';
 
 const options = [
     {key: 'Mr.', text: 'Mr.', value: 'Mr.'},
@@ -24,10 +25,10 @@ class Basic extends Component {
     @observable selectedDate;
     @observable loadingImage = false;
     @observable imageData = USER_IMAGE;
-    @observable showModal = true;
+    @observable showModal = true; 
     @observable selectedState = '';
-    @observable cityOptions = [];
-    @observable stateOptions = [];
+    @observable selectedCity = '';
+    cityOptions = [];
 
     constructor(props) {
         super(props);
@@ -39,7 +40,6 @@ class Basic extends Component {
         this.onModalClose();
         this.getCityOptions = this.getCityOptions.bind(this);
         this.getStateOptions = this.getStateOptions.bind(this);
-        this.getStateOptions();
         this.stateChange = this.stateChange.bind(this);
     }
 
@@ -48,23 +48,22 @@ class Basic extends Component {
 
     getCityOptions(value) {
         let $this = this;
-        this.cityOptions = _.filter(StateCityJSON, (item)=> {
-            return item.state === value;
+        let matchedState = _.find(statesAndCities, function (state) {
+            return state.value === $this.selectedState;
         });
-        this.cityOptions = _.map(this.cityOptions, (item, index)=> {
-            return {key: index, text: item.name, value: item.name};
-        });
+        this.cityOptions = _.map(matchedState.cities, function (city) {
+            return { key : city.key, text : city.name, value : city.name }
+        })
     }
 
     getStateOptions() {
-        let $this = this;
-        this.stateOptions = _.map(StateCityJSON, (item, index)=> {
-            return item.state;
+        return _.map(statesAndCities, (item, index)=> {
+            return {key: item.key, text: item.text, value: item.value};
         });
-        this.stateOptions = _.uniq(this.stateOptions);
-        this.stateOptions = _.map(this.stateOptions, (state, index)=> {
-            return {key: index, text: state, value: state};
-        })
+        //this.stateOptions = _.uniq(this.stateOptions);
+        //this.stateOptions = _.map(this.stateOptions, (state, index)=> {
+        //    return {key: index, text: state, value: state};
+        //})
     }
 
     onPhotoUploadClicked(e) {
@@ -78,10 +77,10 @@ class Basic extends Component {
 
     render() {
         return (
-            <Segment>
+            <Segment basic className="no-padding-segment">
                 <SessionDataModal showToastr={ this.props.showToastr } open={this.showModal}
                                   onClose={(e)=>this.onModalClose(false)}/>
-                <Segment clearing>
+                <Segment color="teal" raised clearing>
                     <Button floated="right" icon="pencil" onClick={(e)=>this.onModalClose(true)}
                             circular size="mini"
                             inverted color='red'/>
@@ -112,14 +111,14 @@ class Basic extends Component {
                 </Segment>
                 <Form>
                     <Grid columns={2}>
-                        <Grid.Column width={12}>
+                        <Grid.Column width={11}>
                             <Segment color='teal' raised>
                                 <Label as='a' color='teal' ribbon>Student's Detail</Label>
                                 <input type="file" id="file" ref="fileUploader" style={{display: "none"}}
                                        onChange={this.onImageUploaded} accept="image/x-png,image/gif,image/jpeg"/>
                                 <Segment basic>
                                     <Grid columns='equal'>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Field size="mini">
                                                     <Input size="mini" placeholder='First name' labelPosition='left'
@@ -131,16 +130,15 @@ class Basic extends Component {
                                                 <Form.Input size="mini" placeholder='Last name' required/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                    </Grid>
-                                </Segment>
-                                <Segment basic>
-                                    <Form.Input size="mini" label='Email' placeholder='someone@example.com' required
-                                                icon='mail'
-                                                iconPosition='left'/>
-                                </Segment>
-                                <Segment basic>
-                                    <Grid columns="equal">
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
+                                            <Grid.Column>
+                                                <Form.Input size="mini" label='Email' placeholder='someone@example.com'
+                                                            required
+                                                            icon='mail'
+                                                            iconPosition='left'/>
+                                            </Grid.Column>
+                                        </Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Group inline>
                                                     <label>Contact <span className="required-star">*</span></label>
@@ -161,7 +159,6 @@ class Basic extends Component {
                                                                 dateFormat="DD/MM/YY"
                                                                 maxDate={Moment()}
                                                                 customInput={<Input size="mini"/>}
-                                                                isClearable={true}
                                                                 placeholderText="DD/MM/YY"
                                                         />
                                                 </Form.Group>
@@ -173,23 +170,23 @@ class Basic extends Component {
 
                         </Grid.Column>
                         <Grid.Column width={4}>
-                            <Segment color="teal" loading={this.loadingImage} className="upload-image-section">
+                            <Segment color="teal" loading={this.loadingImage} className="upload-image-section" raised>
                                 <Image onClick={(event) => {this.onPhotoUploadClicked(event)}}
                                        className='image-styles'
                                        shape="rounded" bordered src={this.imageData}
-                                       size="medium"/>
+                                       size="small"/>
                                 <Button fluid content='Upload' icon='upload' labelPosition='left'
                                         onClick={(event) => {this.onPhotoUploadClicked(event)}}/>
                             </Segment>
                         </Grid.Column>
                     </Grid>
                     <Grid>
-                        <Grid.Column>
+                        <Grid.Column width={11}>
                             <Segment color='teal' raised>
                                 <Label as="a" color="teal" ribbon>Father's Detail</Label>
                                 <Segment basic>
                                     <Grid columns="equal">
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Field>
                                                     <Input size="mini" placeholder='First name' labelPosition='left'
@@ -201,7 +198,7 @@ class Basic extends Component {
                                                 <Form.Input size="mini" placeholder='Last name' required/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Occupation'
                                                             placeholder='Like:- Buisnessman, Govt. Employee, etc.'
@@ -221,7 +218,7 @@ class Basic extends Component {
                                                             iconPosition='left'/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Contact'
                                                             placeholder='Do not include the country code'
@@ -238,11 +235,11 @@ class Basic extends Component {
                                     </Grid>
                                 </Segment>
                             </Segment>
-                            <Segment color="teal">
+                            <Segment color="teal" raised>
                                 <Label as="a" color="teal" ribbon>Mother's Detail</Label>
                                 <Segment basic>
                                     <Grid columns='equal'>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Field>
                                                     <Input size="mini" placeholder='First name' labelPosition='left'
@@ -254,7 +251,7 @@ class Basic extends Component {
                                                 <Form.Input size="mini" placeholder='Last name' required/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Occupation'
                                                             placeholder='Like:- Buisnessman, Govt. Employee, etc.'
@@ -274,7 +271,7 @@ class Basic extends Component {
                                                             iconPosition='left'/>
                                             </Grid.Column>
                                         </Grid.Row>
-                                        <Grid.Row>
+                                        <Grid.Row className="form-row">
                                             <Grid.Column>
                                                 <Form.Input size="mini" label='Contact'
                                                             placeholder='Do not include the country code'
@@ -291,7 +288,7 @@ class Basic extends Component {
                                     </Grid>
                                 </Segment>
                             </Segment>
-                            <Segment color="teal">
+                            <Segment color="teal" raised>
                                 <Label as="a" color="teal" ribbon>Address</Label>
                                 <Segment basic>
                                     <Form.Input size="mini" label='Line 1'
@@ -304,18 +301,27 @@ class Basic extends Component {
                                                 icon='home'
                                                 iconPosition='left'/>
                                     <Form.Group>
-                                        <Label color="teal" basic>State</Label>
-                                        <Form.Dropdown onChange={(e,value)=>{this.stateChange(value)}}
-                                                       text='Select State'
-                                                       search
-                                                       minCharacters={0}
-                                                       width={5}
-                                                       options={this.stateOptions}/>
-                                        <Label color="teal" basic>City</Label>
-                                        <Form.Dropdown options={this.cityOptions}
-                                                       text='Select City'
-                                                       search
-                                                       width={5}/>
+                                        <Form.Field>State
+                                        <Dropdown onChange={(e,value)=>{this.stateChange(e, value)}}
+                                                  selection search
+                                                  width={5}
+                                                  upward={true}
+                                                  minCharacters={0}
+                                                  placeholder="Select State"
+                                                  value={this.selectedState}
+                                                  options={this.getStateOptions()}/>
+                                        </Form.Field>
+                                        <Form.Field>City
+                                        <Dropdown onChange={(e,value)=>{this.cityChange(e, value)}}
+                                                  search selection
+                                                  width={5}
+                                                  upward={true}
+                                                  minCharacters={0}
+                                                  placeholder="Select City"
+                                                  disabled={!this.selectedState}
+                                                  options={this.cityOptions}
+                                                  value={this.selectedCity}/>
+                                        </Form.Field>
 
                                     </Form.Group>
                                 </Segment>
@@ -374,8 +380,14 @@ class Basic extends Component {
         }
     }
 
-    stateChange(value) {
-        this.getCityOptions(value.value);
+    stateChange(e, state) {
+        this.selectedCity = "";
+        this.selectedState = state.value;
+        this.getCityOptions(state.value);
+    }
+
+    cityChange(e,city) {
+        this.selectedCity = city.value;
     }
 }
 export default Basic;

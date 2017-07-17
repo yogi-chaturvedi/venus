@@ -2,7 +2,7 @@
  * Created by Yogesh Chaturvedi on 11-06-2017.
  */
 import React, {Component} from 'react';
-import { Button, Form, Segment, Link, Icon, Input, Divider ,Label ,Dropdown } from 'semantic-ui-react'
+import { Button, Form, Segment, Icon, Input, Divider ,Dropdown } from 'semantic-ui-react'
 import LogoLogin from '../../../assets/image/logo-login.png';
     import DatePicker from 'react-datepicker';
     import  '../../../../node_modules/react-datepicker/dist/react-datepicker.css';
@@ -36,7 +36,7 @@ class SignUp extends Component {
         return (
             <div className="signup-form-container">
                 <Segment className={"login-box"}>
-                    <img className="signup-logo" src={LogoLogin}/>
+                    <img className="signup-logo" alt="Signup-logo" src={LogoLogin}/>
                     <Form>
                         <Form.Group widths='equal'>
                             <Form.Field width={6}>
@@ -62,7 +62,6 @@ class SignUp extends Component {
                                             isClearable={true}
                                             dateFormat="DD/MM/YYYY"
                                             maxDate={Moment()}
-                                            isClearable={true}
                                             placeholderText="DD/MM/YY"
                                     />
                             </Form.Group>

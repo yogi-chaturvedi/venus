@@ -4,14 +4,13 @@
 import React, {Component} from 'react';
 
 import {observable} from 'mobx';
-import { inject, observer } from 'mobx-react';
-import { Grid } from 'semantic-ui-react';
+import { observer } from 'mobx-react';
+import { Grid, Segment } from 'semantic-ui-react';
 import MenuConstants from '../../constants/menu';
 import Employee from '../employee';
 import Student from '../student';
 import Assets from '../assets';
 import Menu from '../../component/menu';
-import { browserHistory } from 'react-router';
 
 @observer
 class Role extends Component {
@@ -37,13 +36,10 @@ class Role extends Component {
         switch (this.role) {
             case 'student' :
                 return <Student showToastr={this.props.showToastr} activeMenuItem={this.activeMenuItem}/>;
-                break;
             case 'employee':
                 return <Employee showToastr={this.props.showToastr}/>;
-                break;
             case 'assets' :
                 return <Assets showToastr={this.props.showToastr}/>;
-                break;
             default :
                 return <Student/>;
         }
@@ -56,19 +52,20 @@ class Role extends Component {
 
     render() {
         return (
-            <div>
+            <Segment basic>
                 <Grid stackable  columns={2} style={{flex: 1, margin: 0}}>
-                    <Grid.Column width={3}>
+                    <Grid.Column width={2}>
                         <Menu menuItems={this.menuItems}
                               active={this.activeMenuItem}
                               onSelect={(e,key)=>this.onMenuItemSelected(e, key.name)}/>
                     </Grid.Column>
 
-                <Grid.Column width={13} style={{overflow: "auto"}}>
-                    { this.getBaseContent() }
-                </Grid.Column>
+                    {/*<Grid.Column width={13} style={{overflow: "auto", 'minHeight': 450, 'maxHeight':600}}>*/}
+                    <Grid.Column width={14}>
+                        { this.getBaseContent() }
+                    </Grid.Column>
                 </Grid>
-            </div>
+            </Segment>
         );
     }
 

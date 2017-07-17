@@ -2,8 +2,8 @@
  * Created by Yogesh Chaturvedi on 12-06-2017.
  */
 import React, { Component } from 'react'
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
-import { inject, observer } from 'mobx-react';
+import { Sidebar, Segment, Menu, Icon } from 'semantic-ui-react'
+import { observer } from 'mobx-react';
 
 @observer
 class SidebarLeftSlideAlong extends Component {

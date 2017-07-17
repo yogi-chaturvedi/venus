@@ -2,10 +2,9 @@
  * Created by Yogesh Chaturvedi on 11-06-2017.
  */
 import React, {Component} from 'react';
-import { Button, Form, Segment, Link, Icon, Divider } from 'semantic-ui-react'
+import { Button, Form, Segment, Icon, Divider } from 'semantic-ui-react'
 import { browserHistory } from 'react-router';
 import LogoLogin from '../../../assets/image/logo-login.png';
-import Message from '.././../../component/message';
 
 class VerifyUser extends Component {
     constructor(props) {
@@ -33,7 +32,7 @@ class VerifyUser extends Component {
         return (
             <div className="verify-user-form-container">
                 <Segment className={"login-box"}>
-                    <img className="verify-user-logo" src={LogoLogin}/>
+                    <img className="verify-user-logo" alt="verify-user-logo" src={LogoLogin}/>
                     <Form>
                         <Form.Input label='Email' fluid type='email' placeholder='Email' icon="mail"
                                     iconPosition='left'/>

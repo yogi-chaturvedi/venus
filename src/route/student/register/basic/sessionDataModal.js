@@ -1,5 +1,5 @@
 import React ,{Component}  from 'react';
-import { Button, Modal, Image, Header , Dropdown ,Label , Form, Message, Icon} from 'semantic-ui-react'
+import { Button, Modal, Header , Form, Message, Icon} from 'semantic-ui-react'
 import RegisterStore from '../store';
 import _ from 'lodash';
 import {observable} from 'mobx';
@@ -7,18 +7,18 @@ import { observer } from 'mobx-react';
 
 const classOptions = [
     {key: 'select', text: 'Choose class', value: "select"},
-    {key: '1', text: '1', value: '1'},
-    {key: '2', text: '2', value: '2'},
-    {key: '3', text: '3', value: '3'},
-    {key: '4', text: '4', value: '4'},
-    {key: '5', text: '5', value: '5'},
-    {key: '6', text: '6', value: '6'},
+    {key: '1', text: 'Class 1', value: '1'},
+    {key: '2', text: 'Class 2', value: '2'},
+    {key: '3', text: 'Class 3', value: '3'},
+    {key: '4', text: 'Class 4', value: '4'},
+    {key: '5', text: 'Class 5', value: '5'},
+    {key: '6', text: 'Class 6', value: '6'}
 ];
 const sectionOptions = [
     {key: 'select', text: 'Choose section', value: "select"},
-    {key: 'A', text: 'A', value: 'A'},
-    {key: 'B', text: 'B', value: 'B'},
-    {key: 'C', text: 'C', value: 'C'}
+    {key: 'A', text: 'Section A', value: 'A'},
+    {key: 'B', text: 'Section B', value: 'B'},
+    {key: 'C', text: 'Section C', value: 'C'}
 ];
 const sessionOptions = [
     {key: 'select', text: 'Select session', value: "select"},
@@ -28,7 +28,7 @@ const sessionOptions = [
 ];
 const branchOptions = [
     {key: 'select', text: 'Choose branch', value: "select"},
-    {key: 'mathScience', text: 'Math Science', value: 'Math Science'},
+    {key: 'mathScience', text: 'Science Maths', value: 'Math Science'},
     {key: 'commerce', text: 'Commerce', value: 'Commerce'},
     {key: 'arts', text: 'Arts', value: 'Arts'}
 ];
@@ -55,48 +55,50 @@ class SessionDataModal extends Component {
                     <Header icon="student" content="Select details" color="green"/>
                     <Modal.Content>
                         <Form>
-                            <Form.Field error={!RegisterStore.student._class.valid}>
-                                <Form.Dropdown required
-                                               onChange={(e,value)=>{this.onDropdownValueChange(value,'_class')}}
-                                               inline label="Class"
-                                               value={RegisterStore.student._class.value ? RegisterStore.student._class.value : 'select'}
-                                               options={classOptions}/>
-                            </Form.Field>
-                            <Form.Field error={!RegisterStore.student.section.valid}>
-                                <Form.Dropdown required
-                                               onChange={(e,value)=>{this.onDropdownValueChange(value,'section')}}
-                                               inline label="Section"
-                                               value={RegisterStore.student.section.value  ? RegisterStore.student.section.value : 'select'}
-                                               options={sectionOptions}/>
-                            </Form.Field>
-                            <Form.Field error={!RegisterStore.student.session.valid}>
-                                <Form.Dropdown required inline
-                                               onChange={(e,value)=>{this.onDropdownValueChange(value,'session')}}
-                                               label="Session applied for"
-                                               value={RegisterStore.student.session.value  ? RegisterStore.student.session.value : 'select'}
-                                               options={sessionOptions}/>
-                            </Form.Field>
-                            <Form.Field error={!RegisterStore.student.branch.valid}>
-                                <Form.Dropdown required inline
-                                               onChange={(e,value)=>{this.onDropdownValueChange(value,'branch')}}
-                                               label="Branch"
-                                               value={RegisterStore.student.branch.value  ? RegisterStore.student.branch.value : 'select'}
-                                               options={branchOptions}/>
-                            </Form.Field>
+                            <Form.Group inline>
+                                <Form.Field width={8} error={!RegisterStore.student._class.valid}>
+                                    <Form.Dropdown required selection
+                                                   onChange={(e,value)=>{this.onDropdownValueChange(value,'_class')}}
+                                                   label="Class"
+                                                   value={RegisterStore.student._class.value ? RegisterStore.student._class.value : 'select'}
+                                                   options={classOptions}/>
+                                </Form.Field>
+                                <Form.Field width={8} error={!RegisterStore.student.section.valid}>
+                                    <Form.Dropdown required selection
+                                                   onChange={(e,value)=>{this.onDropdownValueChange(value,'section')}}
+                                                   label="Section"
+                                                   value={RegisterStore.student.section.value  ? RegisterStore.student.section.value : 'select'}
+                                                   options={sectionOptions}/>
+                                </Form.Field>
+                            </Form.Group>
+                            <Form.Group inline>
+                                <Form.Field width={8} error={!RegisterStore.student.branch.valid}>
+                                    <Form.Dropdown required selection
+                                                   onChange={(e,value)=>{this.onDropdownValueChange(value,'branch')}}
+                                                   label="Branch"
+                                                   value={RegisterStore.student.branch.value  ? RegisterStore.student.branch.value : 'select'}
+                                                   options={branchOptions}/>
+                                </Form.Field>
+                                <Form.Field width={8} error={!RegisterStore.student.session.valid}>
+                                    <Form.Dropdown required selection
+                                                   onChange={(e,value)=>{this.onDropdownValueChange(value,'session')}}
+                                                   label="Session"
+                                                   value={RegisterStore.student.session.value  ? RegisterStore.student.session.value : 'select'}
+                                                   options={sessionOptions}/>
+                                </Form.Field>
+                            </Form.Group>
                         </Form>
                     </Modal.Content>
+                    <Message warning>
+                        <Icon name='help'/>
+                        All fields are required
+                    </Message>
                     <Modal.Actions>
                         <Button secondary icon='trash outline' labelPosition='right' content="Clear"
                                 onClick={this.clearForm}/>
                         <Button positive icon='checkmark' labelPosition='right'
                                 content="Submit" onClick={(e)=>{this.onClose(e)}}/>
                     </Modal.Actions>
-                    {this.showError &&
-                    <Message warning>
-                        <Icon name='help'/>
-                        All fields are required
-                    </Message>
-                    }
 
                 </Modal>
 

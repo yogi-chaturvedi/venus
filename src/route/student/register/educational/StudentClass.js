@@ -2,12 +2,12 @@
  * Created by Yogesh Chaturvedi on 25-06-2017.
  */
 import React, {Component} from 'react';
-import { Button, Grid, Image, Label, Segment, Divider, Form ,Header} from 'semantic-ui-react';
+import { Button, Grid, Segment, Form} from 'semantic-ui-react';
 
 class StudentClass extends Component {
     render() {
         return (
-            <Segment>
+            <Segment basic>
                 <Grid>
                     <Grid.Row>
                         <Grid.Column width={2}>
@@ -38,7 +38,7 @@ class StudentClass extends Component {
                             <Form.Input fluid size="mini" label='Marks / Grade'
                                         required
                                         icon="percent"
-                                        iconPosition='right'/>
+                                        iconPosition='left'/>
                         </Grid.Column>
                         <Grid.Column width={1}>
                             <Button basic color="red" size="mini" className="remove-class"

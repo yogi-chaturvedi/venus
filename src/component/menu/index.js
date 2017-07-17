@@ -2,7 +2,7 @@
  * Created by Yogesh Chaturvedi on 11-06-2017.
  */
 import React, {Component} from 'react';
-import { Menu,Icon ,Divider}  from 'semantic-ui-react';
+import { Menu, Icon }  from 'semantic-ui-react';
 import { observer } from 'mobx-react';
 
 @observer
@@ -11,8 +11,7 @@ class Student extends Component {
     render() {
         return (
             <div>
-                <Menu stackable icon="labeled" vertical pointing size="small"
-                      icon='labeled'>
+                <Menu stackable icon="labeled" vertical pointing size="mini">
                     {
                         this.props.menuItems.map((item)=> {
                             return <Menu.Item key={item.name} name={item.name} color='teal'
