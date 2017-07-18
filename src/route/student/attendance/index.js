@@ -3,7 +3,8 @@
  */
 import React, {Component} from 'react';
 import { observer } from 'mobx-react';
-import { Button, Form, Segment, Input, Divider, Label, Dropdown, Grid, Image, Header, Table, Icon, Radio } from 'semantic-ui-react'
+import { observable } from 'mobx';
+import { Button, Form, Segment, Input, Divider, Label, Dropdown, Grid, Image, Header, Table, Icon, Radio, Checkbox } from 'semantic-ui-react'
 import classDetails from '../../../constants/class-details';
 import dateConstants from '../../../constants/date-constants';
 import DatePicker from 'react-datepicker';
@@ -13,12 +14,38 @@ import _ from 'lodash';
 @observer
 class Attendance extends Component {
 
+    @observable results = [
+        { id : '1', class : 'X', rollNo : '101', name : 'Dharmendra Nagda', attendanceStatus : 'Present'},
+        { id : '2', class : 'X', rollNo : '102', name : 'Dharmendra Nagda', attendanceStatus : 'Present'},
+        { id : '3', class : 'X', rollNo : '103', name : 'Dharmendra Nagda', attendanceStatus : 'Present'},
+        { id : '4', class : 'X', rollNo : '104', name : 'Dharmendra Nagda', attendanceStatus : 'Absent'},
+        { id : '5', class : 'X', rollNo : '105', name : 'Dharmendra Nagda', attendanceStatus : 'Present'},
+        { id : '6', class : 'X', rollNo : '106', name : 'Dharmendra Nagda', attendanceStatus : 'Present'}
+    ];
+
     constructor(props) {
         super(props);
         this.state = {
+            editingAttendance : {},
             days : [],
             dateFilter : '', monthFilter : '', yearFilter : '',
             classFilter: '', sectionFilter: '', branchFilter: '', sessionFilter: ''
+        }
+    }
+
+    editAttendance(id){
+        let edit = { editingAttendance : {}};
+        edit.editingAttendance[id] = true;
+        this.setState( edit );
+    }
+
+    changeAttendanceStatus(status, result){
+        let matchedResult = _.find(this.results, { id : result.id});
+        if(matchedResult){
+            matchedResult.attendanceStatus = status;
+            let edit = { editingAttendance : {}};
+            edit.editingAttendance[result.id] = false;
+            this.setState(edit);
         }
     }
 
@@ -210,6 +237,7 @@ class Attendance extends Component {
                         <Table celled>
                             <Table.Header>
                                 <Table.Row>
+                                    <Table.HeaderCell>Class</Table.HeaderCell>
                                     <Table.HeaderCell>Roll No.</Table.HeaderCell>
                                     <Table.HeaderCell>Name</Table.HeaderCell>
                                     <Table.HeaderCell>Status</Table.HeaderCell>
@@ -217,40 +245,124 @@ class Attendance extends Component {
                             </Table.Header>
 
                             <Table.Body>
-                                <Table.Row>
+                                {
+                                    this.results.map((result) => {
+                                        return <Table.Row key={result.id}>
+                                            <Table.Cell>{result.class}</Table.Cell>
+                                            <Table.Cell>{result.rollNo}</Table.Cell>
+                                            <Table.Cell>{result.name}</Table.Cell>
+                                            <Table.Cell width={4} active={this.state.editingAttendance[result.id]}>
+                                                {
+                                                    this.state.editingAttendance[result.id] ?
+                                                        <Form>
+                                                            <Form.Group inline>
+                                                                <Form.Field>
+                                                                    <Checkbox
+                                                                        radio
+                                                                        label='Present'
+                                                                        name='attendanceRadioGroup'
+                                                                        value='Present'
+                                                                        checked={result.attendanceStatus === 'Present'}
+                                                                        onChange={(e) => this.changeAttendanceStatus('Present', result)}
+                                                                        />
+                                                                </Form.Field>
+                                                                <Form.Field>
+                                                                    <Checkbox
+                                                                        radio
+                                                                        label='Absent'
+                                                                        name='attendanceRadioGroup'
+                                                                        value='Absent'
+                                                                        checked={result.attendanceStatus === 'Absent'}
+                                                                        onChange={(e) => this.changeAttendanceStatus('Absent', result)}
+                                                                        />
+                                                                </Form.Field>
+                                                            </Form.Group>
+                                                        </Form>
+                                                        :
+                                                        <div>
+                                                            {result.attendanceStatus === 'Present' ?
+                                                                <Icon color='green' name='checkmark'/> :
+                                                                <Icon color='red' name='close'/>}
+                                                            {result.attendanceStatus}
+                                                            <Button floated="right" icon="pencil"
+                                                                    onClick={()=>this.editAttendance(result.id)}
+                                                                    circular size="mini"
+                                                                    inverted color='teal'/>
+                                                        </div>
+                                                }
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    })
+                                }
+                                {/*<Table.Row>
+                                    <Table.Cell>Class X</Table.Cell>
                                     <Table.Cell>101</Table.Cell>
                                     <Table.Cell>Dharmendra Nagda</Table.Cell>
-                                    <Table.Cell><Icon color='green' name='checkmark'/>Present</Table.Cell>
+                                    <Table.Cell><Icon color='green' name='checkmark'/>Present
+                                        <Button floated="right" icon="pencil"
+                                                onClick={(e)=>this.onModalClose(true)}
+                                                circular size="mini"
+                                                inverted color='teal'/>
+                                    </Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
+                                    <Table.Cell>Class X</Table.Cell>
                                     <Table.Cell>102</Table.Cell>
                                     <Table.Cell>Dharmendra Nagda</Table.Cell>
-                                    <Table.Cell><Icon color='red' name='close'/>Absent</Table.Cell>
+                                    <Table.Cell><Icon color='red' name='close'/>Absent
+                                        <Button floated="right" icon="pencil"
+                                                onClick={(e)=>this.onModalClose(true)}
+                                                circular size="mini"
+                                                inverted color='teal'/>
+                                    </Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
+                                    <Table.Cell>Class X</Table.Cell>
                                     <Table.Cell>103</Table.Cell>
                                     <Table.Cell>Dharmendra Nagda</Table.Cell>
-                                    <Table.Cell><Icon color='green' name='checkmark'/>Present</Table.Cell>
+                                    <Table.Cell><Icon color='green' name='checkmark'/>Present
+                                        <Button floated="right" icon="pencil"
+                                                onClick={(e)=>this.onModalClose(true)}
+                                                circular size="mini"
+                                                inverted color='teal'/>
+                                    </Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
+                                    <Table.Cell>Class X</Table.Cell>
                                     <Table.Cell>104</Table.Cell>
                                     <Table.Cell>Dharmendra Nagda</Table.Cell>
-                                    <Table.Cell><Icon color='green' name='checkmark'/>Present</Table.Cell>
+                                    <Table.Cell><Icon color='green' name='checkmark'/>Present
+                                        <Button floated="right" icon="pencil"
+                                                onClick={(e)=>this.onModalClose(true)}
+                                                circular size="mini"
+                                                inverted color='teal'/>
+                                    </Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
+                                    <Table.Cell>Class X</Table.Cell>
                                     <Table.Cell>105</Table.Cell>
                                     <Table.Cell>Dharmendra Nagda</Table.Cell>
-                                    <Table.Cell><Icon color='green' name='checkmark'/>Present</Table.Cell>
+                                    <Table.Cell><Icon color='green' name='checkmark'/>Present
+                                        <Button floated="right" icon="pencil"
+                                                onClick={(e)=>this.onModalClose(true)}
+                                                circular size="mini"
+                                                inverted color='teal'/>
+                                    </Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
+                                    <Table.Cell>Class X</Table.Cell>
                                     <Table.Cell>106</Table.Cell>
                                     <Table.Cell>Dharmendra Nagda</Table.Cell>
-                                    <Table.Cell><Icon color='green' name='checkmark'/>Absent</Table.Cell>
-                                </Table.Row>
+                                    <Table.Cell><Icon color='green' name='checkmark'/>Absent
+                                        <Button floated="right" icon="pencil"
+                                                onClick={(e)=>this.onModalClose(true)}
+                                                circular size="mini"
+                                                inverted color='teal'/>
+                                    </Table.Cell>
+                                </Table.Row>*/}
                             </Table.Body>
                             </Table>
                         </Segment>
-
                 </Segment>
         );
     }
