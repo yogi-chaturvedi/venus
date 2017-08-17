@@ -9,7 +9,7 @@ class Calendar extends Component {
 
     constructor(props) {
         super(props);
-        var date = new Date('02/28/2015');
+        var date = new Date(props.displayDate);
         this.state ={
             year: date.getFullYear(),
             month: date.getMonth(),
@@ -166,7 +166,7 @@ class MonthDates extends Component{
                             {weekStack.map(function (item, j) {
                                 d += 1;
                                 isDate = d > 0 && d <= that.props.daysInMonth;
-                                if(j == 6){
+                                if(isDate && j == 6){
                                     {/* Ignore Sundays */}
                                     return <Grid.Column key={'column-' + i + "" + j}><Segment color='orange'>{d}</Segment></Grid.Column>
                                 }

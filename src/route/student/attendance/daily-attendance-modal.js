@@ -55,15 +55,18 @@ class DailyAttendance extends Component {
         const { monthlyData } = this.props;
         let groupedData = _.groupBy(monthlyData.value,'id');
         console.log(groupedData);
+        let dateString = '02/01/2012';
+        let d = new Date(dateString);
+        let month = _.find(DateConstants.months, { value : d.getMonth()+1});
         return (
             <Modal open={this.props.open}
                    size='small'
                    onClose={(e)=>{ this.props.onClose(e) }}
                    closeOnEscape={true}
                    closeOnRootNodeClick={true}>
-                <Modal.Header>Daywise Attendance - January, 2017</Modal.Header>
+                <Modal.Header>Daywise Attendance - {month.text}, {d.getFullYear()}</Modal.Header>
                 <Modal.Content>
-                    <Calendar/>
+                    <Calendar displayDate={dateString}/>
                     { /*  <Grid columns='equal'>
                         <Grid.Row>
                             <Grid.Column><Segment basic>Sun</Segment></Grid.Column>
