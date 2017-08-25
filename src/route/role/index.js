@@ -37,7 +37,7 @@ class Role extends Component {
             case 'student' :
                 return <Student showToastr={this.props.showToastr} activeMenuItem={this.activeMenuItem}/>;
             case 'employee':
-                return <Employee showToastr={this.props.showToastr}/>;
+                return <Employee showToastr={this.props.showToastr} activeMenuItem={this.activeMenuItem}/>;
             case 'assets' :
                 return <Assets showToastr={this.props.showToastr}/>;
             default :

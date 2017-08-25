@@ -6,3 +6,6 @@ body {
   overflow: hidden;
   */
 }
+.step-container{
+  min-height:500px;
+}

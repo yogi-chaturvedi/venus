@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 import { Modal, Grid, Segment, Icon } from 'semantic-ui-react'
+import _ from 'lodash';
 
 class Calendar extends Component {
     displayName = 'Calendar';
@@ -113,7 +114,8 @@ class Calendar extends Component {
                         onSelect={this.selectDate}
                         weekNumbers={this.state.weekNumbers}
                         disablePast={this.state.disablePast}
-                        minDate={this.state.minDate}/>
+                        minDate={this.state.minDate}
+                        attendance={this.props.attendance}/>
                 </div>
 
             </div>
@@ -124,7 +126,27 @@ class Calendar extends Component {
 class MonthDates extends Component{
     displayName = 'MonthDates';
 
+    constructor(props){
+        super(props);
+        this.getAttendanceStatus = this.getAttendanceStatus.bind(this);
+    }
+
+    getAttendanceStatus(date) {
+        const { attendance } = this.props;
+        let status = _.find(attendance, { id : date.toString()});
+        if(status){
+            if(status.value === 'Present'){
+                return <Segment style={{padding:10}} color='green'><Icon color='green' size="small" name='checkmark' circular/> {date} </Segment>;
+            }
+            else if(status.value === 'Absent'){
+                return <Segment style={{padding:10}} color='red'><Icon color='red' size="small" name='close' circular/> {date} </Segment>;
+            }
+        }
+    }
+
     render() {
+        let $this = this;
+        const { monthlyData } = this.props;
         var haystack,
             day,
             d,
@@ -171,9 +193,9 @@ class MonthDates extends Component{
                                     return <Grid.Column key={'column-' + i + "" + j}><Segment color='orange'>{d}</Segment></Grid.Column>
                                 }
                                 else if (isDate) {
-                                    return <Grid.Column key={'column-' + i + "" + j}><Segment color='green'><Icon color='green' size="small" name='checkmark' circular/>
-                                            {d}
-                                        </Segment></Grid.Column>
+                                    return <Grid.Column key={'column-' + i + "" + j}>
+                                        {$this.getAttendanceStatus(d)}
+                                    </Grid.Column>
                                 }
                                 return <Grid.Column key={d}><Segment basic/></Grid.Column>
                             })}

@@ -13,6 +13,7 @@ import RegisterStore from '../store';
 import _ from 'lodash';
 import StateCityJSON from '../../../../util/cities.json';
 import statesAndCities from '../../../../util/states-cities';
+import AddressForm from '../../../../component/form/address';
 
 const options = [
     {key: 'Mr.', text: 'Mr.', value: 'Mr.'},
@@ -28,7 +29,6 @@ class Basic extends Component {
     @observable showModal = true; 
     @observable selectedState = '';
     @observable selectedCity = '';
-    cityOptions = [];
 
     constructor(props) {
         super(props);
@@ -38,32 +38,12 @@ class Basic extends Component {
         this.onImageUploaded = this.onImageUploaded.bind(this);
         this.onModalClose = this.onModalClose.bind(this);
         this.onModalClose();
-        this.getCityOptions = this.getCityOptions.bind(this);
-        this.getStateOptions = this.getStateOptions.bind(this);
         this.stateChange = this.stateChange.bind(this);
+        this.cityChange = this.cityChange.bind(this);
+
     }
 
     onNextButtonClicked(e) {
-    }
-
-    getCityOptions(value) {
-        let $this = this;
-        let matchedState = _.find(statesAndCities, function (state) {
-            return state.value === $this.selectedState;
-        });
-        this.cityOptions = _.map(matchedState.cities, function (city) {
-            return { key : city.key, text : city.name, value : city.name }
-        })
-    }
-
-    getStateOptions() {
-        return _.map(statesAndCities, (item, index)=> {
-            return {key: item.key, text: item.text, value: item.value};
-        });
-        //this.stateOptions = _.uniq(this.stateOptions);
-        //this.stateOptions = _.map(this.stateOptions, (state, index)=> {
-        //    return {key: index, text: state, value: state};
-        //})
     }
 
     onPhotoUploadClicked(e) {
@@ -288,59 +268,16 @@ class Basic extends Component {
                                     </Grid>
                                 </Segment>
                             </Segment>
-                            <Segment color="teal" raised>
-                                <Label as="a" color="teal" ribbon>Address</Label>
-                                <Segment basic>
-                                    <Form.Input size="mini" label='Line 1'
-                                                placeholder='Enter...'
-                                                icon='home'
-                                                required
-                                                iconPosition='left'/>
-                                    <Form.Input size="mini" label='Line 2'
-                                                placeholder='Enter...'
-                                                icon='home'
-                                                iconPosition='left'/>
-                                    <Form.Group>
-                                        <Form.Field>State
-                                        <Dropdown onChange={(e,value)=>{this.stateChange(e, value)}}
-                                                  selection search
-                                                  width={5}
-                                                  upward={true}
-                                                  minCharacters={0}
-                                                  placeholder="Select State"
-                                                  value={this.selectedState}
-                                                  options={this.getStateOptions()}/>
-                                        </Form.Field>
-                                        <Form.Field>City
-                                        <Dropdown onChange={(e,value)=>{this.cityChange(e, value)}}
-                                                  search selection
-                                                  width={5}
-                                                  upward={true}
-                                                  minCharacters={0}
-                                                  placeholder="Select City"
-                                                  disabled={!this.selectedState}
-                                                  options={this.cityOptions}
-                                                  value={this.selectedCity}/>
-                                        </Form.Field>
 
-                                    </Form.Group>
-                                </Segment>
-                            </Segment>
+                            <AddressForm
+                                selectedState={this.selectedState}
+                                selectedCity={this.selectedCity}
+                                onStateChange={this.stateChange}
+                                onCityChange={this.cityChange} />
                             <Form.Field>
                                 <Divider hidden vertical/>
                             </Form.Field>
                         </Grid.Column>
-                        {/*<Grid.Column width={6}>
-                         <br/>
-                         <Segment loading={this.loadingImage} className="upload-image-section" compact>
-                         <Image onClick={(event) => {this.onPhotoUploadClicked(event)}}
-                         className='image-styles'
-                         shape="rounded" bordered src={this.imageData}
-                         size="small"/>
-                         <Button fluid content='Upload' icon='upload' labelPosition='left'
-                         onClick={(event) => {this.onPhotoUploadClicked(event)}}/>
-                         </Segment>
-                         </Grid.Column>*/}
                     </Grid>
                 </Form>
             </Segment>
@@ -351,7 +288,7 @@ class Basic extends Component {
         const {files} = event.target;
 
         if (files && files[0]) {
-            var reader = new FileReader();
+            let reader = new FileReader();
 
             reader.onloadstart = () => this.loadingImage = true;
             reader.onload = event => {
@@ -383,10 +320,9 @@ class Basic extends Component {
     stateChange(e, state) {
         this.selectedCity = "";
         this.selectedState = state.value;
-        this.getCityOptions(state.value);
     }
 
-    cityChange(e,city) {
+    cityChange(e, city) {
         this.selectedCity = city.value;
     }
 }

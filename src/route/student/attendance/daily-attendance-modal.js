@@ -66,7 +66,7 @@ class DailyAttendance extends Component {
                    closeOnRootNodeClick={true}>
                 <Modal.Header>Daywise Attendance - {month.text}, {d.getFullYear()}</Modal.Header>
                 <Modal.Content>
-                    <Calendar displayDate={dateString}/>
+                    <Calendar displayDate={dateString} attendance={monthlyData.value}/>
                     { /*  <Grid columns='equal'>
                         <Grid.Row>
                             <Grid.Column><Segment basic>Sun</Segment></Grid.Column>
